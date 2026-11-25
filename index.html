@@ -59,15 +59,20 @@ button:focus-visible{outline:3px solid rgba(80,140,200,.65);outline-offset:2px;b
 #cen button[aria-pressed="true"]{color:#fff;background:linear-gradient(180deg,#3a7d62 0%,var(--verde) 60%,var(--verde2) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 1px 3px rgba(0,40,20,.3)}
 #cen button.fp[aria-pressed="true"]{background:linear-gradient(180deg,#5d7d96 0%,#3e5d78 60%,#2c465e 100%)}
 #cen button.fa[aria-pressed="true"]{background:linear-gradient(180deg,#c9a463 0%,#a5803c 60%,#7f6128 100%)}
+#cen .cr1{display:flex;gap:3px;justify-content:center}
+#cen button.cd[aria-pressed="true"]{background:linear-gradient(180deg,#8a6fb0 0%,#6b4f94 60%,#523a75 100%)}
+body.cen-cid #hud:before,body.cen-cid .jan .topo:before,body.cen-cid .dtopo:before{background:linear-gradient(90deg,#6b4f94 0 72%,var(--verde) 72% 100%)}
+.selo.cd{background:#ece6f5;color:#523a75}
+.fpf.cd{background:#f3eff9;border-left-color:#6b4f94}
 body.cen-fep #hud:before,body.cen-fep .jan .topo:before,body.cen-fep .dtopo:before{background:linear-gradient(90deg,#3e5d78 0 72%,var(--ouro) 72% 100%)}
 body.cen-fepaj #hud:before,body.cen-fepaj .jan .topo:before,body.cen-fepaj .dtopo:before{background:linear-gradient(90deg,#a5803c 0 72%,#3e5d78 72% 100%)}
 .selo{display:inline-block;margin-left:6px;padding:2px 7px;border-radius:999px;font:800 10px/1.3 var(--body);letter-spacing:.04em;text-transform:uppercase;vertical-align:middle;background:#e4e9ee;color:#3e5d78}
 .selo.aj{background:#f3e7cc;color:#7f6128}
 .fpf{margin:2px 14px 8px;padding:8px 10px;border-radius:10px;background:#eef2f6;border-left:4px solid #3e5d78;font:600 11.5px/1.4 var(--body);color:#33454f}
 .fpf.aj{background:#f7f0e0;border-left-color:#a5803c}
-@media (max-width:1180px){#cen{left:96px;transform:none}}
-@media (max-width:900px){#chip{top:58px}.jan{top:100px}}
-@media (max-width:1000px){.mb .qf{display:none}}
+body.chip-baixo #chip{top:var(--chipTop,60px)}
+body.jan-ajust .jan{top:var(--janTop,58px)}
+@media (max-width:1240px){.mb .qf{display:none}}
 
 /* ---------- faixa de baixo (modelos) ---------- */
 #hud{position:fixed;left:12px;right:12px;bottom:10px;z-index:5;height:112px;border-radius:16px;display:flex;align-items:stretch;overflow:hidden;
@@ -84,6 +89,55 @@ body.cen-fepaj #hud:before,body.cen-fepaj .jan .topo:before,body.cen-fepaj .dtop
 #hud .tab h1{margin:0;font:800 20px/1 var(--display);letter-spacing:.01em;text-wrap:balance}
 #hud .tab p{margin:5px 0 0;font:800 10px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;opacity:.92}
 #hud .vdiv{width:1px;margin:18px 8px;background:linear-gradient(180deg,transparent,rgba(22,62,48,.3) 20%,rgba(22,62,48,.3) 80%,transparent)}
+/* ---------- faixa de baixo: 3 botões (Tipos de ônibus · Foz · Outras cidades) e o que cada um mostra ---------- */
+#grupos{flex:0 0 auto;width:132px;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:10px 2px 4px 4px}
+#grupos button{appearance:none;cursor:pointer;border:1px solid rgba(160,175,190,.55);border-radius:9px;padding:3px 9px;text-align:left;display:flex;flex-direction:column;gap:1px;
+  background:linear-gradient(#fbfcfd,#e7ecf1);box-shadow:inset 0 1px 0 #fff,0 1px 3px rgba(40,50,70,.18)}
+#grupos button:hover{background:#fff}
+#grupos b{font:800 11.5px/1.1 var(--body);color:var(--azul-btn);white-space:nowrap}
+#grupos small{font:700 9.5px/1.1 var(--body);color:#6a7a84;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#grupos button[aria-selected="true"]{border-color:transparent;background:linear-gradient(180deg,#3a7d62 0%,var(--verde) 60%,var(--verde2) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 1px 3px rgba(0,40,20,.3)}
+#grupos button[aria-selected="true"] b,#grupos button[aria-selected="true"] small{color:#fff}
+#painel{flex:1 1 0;min-width:0;display:flex}
+#painel>.pg{flex:1 1 auto;min-width:0}
+#painel>.pg[hidden]{display:none}
+#opFoz{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 10px 8px}
+.op{appearance:none;cursor:pointer;border:1px solid rgba(160,175,190,.55);border-radius:14px;background:linear-gradient(#fbfcfd,#e6ebf1);box-shadow:inset 0 1px 0 #fff,0 2px 4px rgba(40,50,70,.16);
+  display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 10px;min-width:0}
+.op:hover{background:#fff}
+.op b{font:800 14px/1.1 var(--display);color:var(--tinta);white-space:nowrap}
+.op span{font:800 13px/1.1 var(--body);color:var(--verde);font-variant-numeric:tabular-nums;white-space:nowrap}
+.op small{font:700 10px/1.1 var(--body);color:#6a7a84;white-space:nowrap}
+#opFoz .op{flex:1 1 0;max-width:200px}
+.op[aria-pressed="true"]{border-color:transparent;background:linear-gradient(180deg,#3a7d62 0%,var(--verde) 60%,var(--verde2) 100%)}
+.op.fp[aria-pressed="true"]{background:linear-gradient(180deg,#5d7d96 0%,#3e5d78 60%,#2c465e 100%)}
+.op.fa[aria-pressed="true"]{background:linear-gradient(180deg,#c9a463 0%,#a5803c 60%,#7f6128 100%)}
+.op.cd[aria-pressed="true"]{background:linear-gradient(180deg,#8a6fb0 0%,#6b4f94 60%,#523a75 100%)}
+.op[aria-pressed="true"] b,.op[aria-pressed="true"] span,.op[aria-pressed="true"] small{color:#fff}
+#opCid{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:11px 10px 5px}
+#opCid .ops{width:100%;max-width:900px;display:grid;grid-template-columns:repeat(6,1fr);gap:4px 6px}
+#opCid .op b i{font-style:normal}
+#opCid .op{flex-direction:column;justify-content:center;gap:1px;padding:3px 4px;border-radius:10px;overflow:hidden}
+#opCid .op b{font:800 11.5px/1.1 var(--body);overflow:hidden;text-overflow:ellipsis;max-width:100%}
+#opCid .op span{font-size:11px}
+.tarja{width:100%;max-width:900px;box-sizing:border-box;text-align:center;font:800 9.5px/1.2 var(--body);letter-spacing:.05em;text-transform:uppercase;color:#523a75;background:#ece6f5;border:1px solid #d9cfe9;border-radius:8px;padding:4px 8px}
+@media (max-width:1000px) and (min-width:721px){
+  #hud .tab{width:128px;margin-left:8px;padding:6px 6px}
+  #hud .tab .t2{font-size:17px}#hud .tab .t1,#hud .tab .t3{font-size:9px}
+  #hud .vdiv{margin:18px 4px}
+  #grupos{width:116px}
+  #btnConta{margin-right:8px;padding:8px 10px}#btnConta b{font-size:16px}#btnConta span{max-width:100px;font-size:9px}
+  .mb .pk{display:none}.mb .ring{width:52px;height:52px}.mb .ring i{width:44px;height:44px}.mb .nm{font-size:12.5px}
+  #opFoz{gap:6px;padding:12px 4px 6px}#opFoz .op{padding:7px 5px;overflow:hidden}
+  #opFoz .op b,#opFoz .op small{white-space:normal;text-align:center;line-height:1.05}.op b{font-size:12.5px}
+  #opCid{padding:10px 4px 4px;gap:4px}
+  #opCid .op{flex-direction:column;gap:1px;padding:3px 2px}#opCid .op b{font-size:10.5px}#opCid .op span{font-size:10px}#opCid .op b i{display:none}
+  .tarja{font-size:8px;letter-spacing:.02em;padding:3px 4px}
+}
+@media (max-width:1240px) and (min-width:721px){body.g-cid #hud{height:138px}#opCid .ops{grid-template-columns:repeat(4,1fr)}#opCid .op b[data-c]{font-size:0!important}#opCid .op b[data-c]:after{content:attr(data-c);font-size:10.5px}}
+@media (max-width:1240px) and (min-width:1001px){#opCid{padding:10px 8px 4px;gap:4px}#opCid .op{flex-direction:column;gap:1px;padding:3px 4px}#opCid .op b{font-size:11.5px}#opCid .op span{font-size:11px}.tarja{padding:3px 6px}}
+@media (max-width:1240px) and (min-width:721px){#opCid{padding:9px 6px 4px;gap:3px}#opCid .ops{gap:3px 5px}#opCid .op{padding:2px 3px;gap:0}#opCid .op b,#opCid .op span{line-height:1.1}}
+@media (max-width:1000px) and (min-width:721px){#opCid .op b{font-size:10px;letter-spacing:-.2px}#opCid .op b[data-c]:after{font-size:10px}}
 #modelos{flex:1 1 auto;display:flex;align-items:center;justify-content:space-around;gap:6px;padding:12px 8px 8px;min-width:0}
 .mb{flex:1 1 0;min-width:0;max-width:200px;appearance:none;border:0;background:none;padding:4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:14px}
 .mb .ring{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;transition:transform .15s}
@@ -98,7 +152,7 @@ body.cen-fepaj #hud:before,body.cen-fepaj .jan .topo:before,body.cen-fepaj .dtop
 #btnConta{flex:0 0 auto;align-self:center;margin:6px 14px 0 6px;appearance:none;cursor:pointer;border-radius:14px;padding:10px 14px;display:flex;flex-direction:column;align-items:center;gap:2px;
   border:1px solid rgba(255,255,255,.6);background:linear-gradient(180deg,#e9c987 0%,var(--ouro) 60%,#a9853f 100%);color:#3b2a0b;box-shadow:inset 0 2px 0 rgba(255,255,255,.45),0 2px 4px rgba(80,60,10,.3)}
 #btnConta b{font:800 18px/1 var(--display);font-variant-numeric:tabular-nums}
-#btnConta span{font:800 10px/1 var(--body);letter-spacing:.05em;text-transform:uppercase}
+#btnConta span{font:800 10px/1.15 var(--body);letter-spacing:.05em;text-transform:uppercase;max-width:150px;white-space:normal;text-align:center}
 
 /* ---------- pontos clicáveis sobre o ônibus ---------- */
 #pontos{position:fixed;inset:0;z-index:3;pointer-events:none}
@@ -201,11 +255,11 @@ body.noite #chip{color:var(--tinta)}
 
 /* celular */
 @media (max-width:720px){
-  #dock{flex-direction:row;top:auto;bottom:118px;left:8px;right:8px;max-height:none;overflow-x:auto;overflow-y:hidden;padding:6px 8px;border-radius:22px;justify-content:flex-start}
+  #dock{flex-direction:row;top:auto;bottom:160px;left:8px;right:8px;max-height:none;overflow-x:auto;overflow-y:hidden;padding:6px 8px;border-radius:22px;justify-content:flex-start}
   .db{width:56px;flex:none}
   .db .ico{width:42px;height:42px}
   .db svg{width:22px;height:22px}
-  #hud{left:6px;right:6px;bottom:6px;height:104px}
+  #hud{left:6px;right:6px;bottom:6px}
   #hud .tab,#hud .vdiv{display:none}
   #modelos{padding:10px 2px 6px;gap:0}
   .mb .ring{width:50px;height:50px}.mb .ring i{width:42px;height:42px}
@@ -216,10 +270,31 @@ body.noite #chip{color:var(--tinta)}
   #btnConta span{font-size:8.5px;line-height:1.15;max-width:74px;white-space:normal;text-align:center}
   #btnConta{margin:6px 8px 0 2px;padding:8px 9px}
   #btnConta b{font-size:15px}
-  #chip{font-size:11px;left:8px;right:auto;max-width:calc(100% - 16px);top:54px}
-  #cen{left:8px;right:8px;transform:none;justify-content:stretch}
-  #cen button{flex:1 1 0;padding:9px 4px;font-size:12px}
-  .jan{left:8px;right:8px;width:auto;top:auto;bottom:186px;max-height:calc(100% - 250px)}
+  #chip{font-size:11px;left:8px;right:auto;max-width:calc(100% - 16px);top:10px}
+  #hud{flex-wrap:wrap;align-content:flex-start;height:146px}
+  #grupos{order:-1;flex:0 0 100%;width:100%;box-sizing:border-box;flex-direction:row;padding:9px 6px 0;gap:4px}
+  #grupos button{flex:1 1 0;align-items:center;padding:5px 4px;min-width:0}
+  #grupos b{font-size:11px}
+  #grupos small{display:none}
+  #painel{height:104px;flex:1 1 200px}
+  #opFoz{gap:5px;padding:6px 4px}
+  #opFoz .op{padding:6px 4px;overflow:hidden}
+  #opFoz .op b,#opFoz .op small{white-space:normal;text-align:center;line-height:1.05}
+  .op b{font-size:12px}
+  .op small{font-size:9px}
+  #opCid{padding:4px 4px 2px;gap:3px}
+  body.g-cid #hud{height:174px}body.g-cid #painel{height:132px}body.g-cid #dock{bottom:188px}body.g-cid .jan{bottom:264px}
+  #opCid .tarja{text-transform:none;letter-spacing:0}
+  #opCid .ops{gap:3px;grid-template-columns:repeat(4,1fr)}
+  #opCid .op b[data-c]{font-size:0!important}#opCid .op b[data-c]:after{content:attr(data-c);font-size:9.2px;letter-spacing:-.3px}
+  #opCid .op{flex-direction:column;gap:0;padding:2px 2px;border-radius:8px}#opCid .op b,#opCid .op span{line-height:1.08}
+  #opCid .op b i{display:none}
+  #opCid .op b{letter-spacing:-.3px}
+  #opCid .op span{letter-spacing:-.2px}
+  #opCid .op b{font-size:9.8px}
+  #opCid .op span{font-size:10px}
+  .tarja{font-size:8px;padding:2px 4px;letter-spacing:.02em}
+  .jan{left:8px;right:8px;width:auto;top:auto;bottom:236px;max-height:calc(100% - 290px)}
 }
 @media (prefers-reduced-motion:reduce){.pt:after{animation:none}}
 </style>
@@ -229,12 +304,6 @@ body.noite #chip{color:var(--tinta)}
 
 <div id="chip"><span class="dot"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 3h12a3 3 0 0 1 3 3v10a2 2 0 0 1-1 1.7V20a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H7v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2.3A2 2 0 0 1 3 16V6a3 3 0 0 1 3-3Zm0 3v5h12V6H6Zm1 8a1.3 1.3 0 1 0 0 2.6A1.3 1.3 0 0 0 7 14Zm10 0a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6Z"/></svg></span>
 <span><span id="chipCen"></span>Frota de <b id="chipFrota">105</b> · <b id="chipOper">88</b> rodando · média <b id="chipMedia">R$ 11,00/km</b></span></div>
-
-<div id="cen" role="group" aria-label="Qual conta mostrar">
-  <button type="button" data-cen="nosso" aria-pressed="true">Nosso modelo</button>
-  <button type="button" class="fp" data-cen="fep" aria-pressed="false">FEPESE</button>
-  <button type="button" class="fa" data-cen="fepaj" aria-pressed="false">FEPESE ajustado</button>
-</div>
 
 <nav id="dock" aria-label="Controles do ônibus">
   <button class="db" id="bGirar" aria-pressed="true"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></span><span class="lb">Girar</span></button>
@@ -253,8 +322,36 @@ body.noite #chip{color:var(--tinta)}
 <footer id="hud">
   <button class="tab" id="btnCorte" type="button" aria-label="Faixa de corte mínima: 400 mil km por mês"><span class="t1" id="corteT1">Faixa de corte mínima</span><span class="t2">400 mil km/mês</span><span class="t3" id="corteT3">até R$ 12,87 · acima R$ 6,98</span></button>
   <div class="vdiv"></div>
-  <div id="modelos" role="group" aria-label="Escolha o modelo"></div>
-  <button id="btnConta"><b id="contaVal">R$ 10,34</b><span>valor médio do km</span></button>
+  <div id="grupos" role="tablist" aria-label="O que mostrar aqui">
+    <button type="button" role="tab" data-g="tipos" aria-selected="true"><b>Tipos de ônibus</b><small id="gTipos">Básico</small></button>
+    <button type="button" role="tab" data-g="foz" aria-selected="false"><b>Foz</b><small id="gFoz">Nosso modelo</small></button>
+    <button type="button" role="tab" data-g="cid" aria-selected="false"><b>Outras cidades</b><small id="gCid">11 cidades</small></button>
+  </div>
+  <div id="painel">
+    <div id="modelos" class="pg" data-g="tipos" role="group" aria-label="Escolha o tipo de ônibus"></div>
+    <div id="opFoz" class="pg" data-g="foz" role="group" aria-label="Contas de Foz" hidden>
+      <button type="button" class="op fp" data-cen="fep" aria-pressed="false"><b>FEPESE</b><span>R$ 0,00/km</span><small>planilha do edital</small></button>
+      <button type="button" class="op fa" data-cen="fepaj" aria-pressed="false"><b>FEPESE ajustado</b><span>R$ 0,00/km</span><small>com dados de hoje</small></button>
+      <button type="button" class="op" data-cen="nosso" aria-pressed="true"><b>Nosso modelo</b><span>R$ 0,00/km</span><small>conta do zero</small></button>
+    </div>
+    <div id="opCid" class="pg" data-g="cid" hidden>
+      <div class="ops" role="group" aria-label="Foz com a conta de outras cidades">
+        <button type="button" class="op cd" data-cen="cid_cwb" aria-pressed="false"><b>Curitiba</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_rmc" aria-pressed="false"><b data-c="Gde. Curitiba">Grande Curitiba</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_lon" aria-pressed="false"><b>Londrina</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_poa" aria-pressed="false"><b>Porto Alegre</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_bh" aria-pressed="false"><b>BH</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_mao" aria-pressed="false"><b>Manaus</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_jf" aria-pressed="false"><b>Juiz de Fora</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_sp" aria-pressed="false"><b>São Paulo</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_rio" aria-pressed="false"><b>Rio<i> de Janeiro</i></b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_cps" aria-pressed="false"><b>Campinas</b><span>R$ 0,00/km</span></button>
+        <button type="button" class="op cd" data-cen="cid_rb" aria-pressed="false"><b>Rio Branco</b><span>R$ 0,00/km</span></button>
+      </div>
+      <div class="tarja">Simulação dos valores de outras cidades aplicadas a Foz</div>
+    </div>
+  </div>
+  <button id="btnConta"><b id="contaVal">R$ 10,34</b><span id="contaRot">valor médio do km do básico</span></button>
 </footer>
 
 <script type="importmap">
@@ -267,59 +364,59 @@ import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.j
 
 /* números do modelo (gerado por gera_num.py) */
 const NUM = {
-"data": "18/11/2026",
+"data": "24/11/2026",
 "km": 586000,
 "frota": 105,
 "oper": 88,
-"rkm": 11.40194384336101,
-"conta_mes": 6681539.092209552,
-"conta_ano": 80178469.10651463,
-"P2": 6.97616780712854,
-"F": 2593504.757232228,
-"P1": 13.45992970020911,
+"rkm": 11.178480105240839,
+"conta_mes": 6550589.341671132,
+"conta_ano": 78607072.10005358,
+"P2": 6.693074252113469,
+"F": 2628447.829932639,
+"P1": 13.264193826945066,
 "cortes": {
-"300": 15.6211836645693,
-"400": 13.45992970020911,
-"450": 12.739511712089048,
-"500": 12.163177321592997
+"300": 15.454567018555599,
+"400": 13.264193826945066,
+"450": 12.534069429741557,
+"500": 11.949969911978748
 },
 "var": {
 "diesel": 3.0052814628571434,
 "oleo": 0.212,
 "pneus": 0.15072853638427988,
-"pecas": 1.0854007483646189,
+"pecas": 0.8107999999999997,
 "hora": 2.313472025308642,
-"soma": 6.766882772914684
+"soma": 6.4922820245500645
 },
 "itens_mes": {
 "motoristas": 1391792.1735361598,
 "diesel": 1761094.937234286,
-"pecas": 636044.8385416666,
+"pecas": 475128.7999999999,
 "manutencao": 366768.30343647994,
-"ir": 282619.29666368675,
+"ir": 294170.87776683416,
 "fiscais": 99735.259901904,
-"iss": 200446.17276628656,
+"iss": 196517.68025013394,
 "oleo": 124232.0,
 "adm": 105898.44777410252,
 "garagem": 100000.0,
 "pneus": 88326.92232118802,
 "outros": 267033.12862925924,
 "limpeza": 39390.07658079999,
-"seguros": 22515.904606477925,
-"capital": 1195641.630217255
+"seguros": 22435.446587207087,
+"capital": 1218065.2876527766
 },
 "fixos": {
-"capital": 1195641.630217255,
+"capital": 1218065.2876527766,
 "manutencao": 366768.30343647994,
-"ir": 282619.29666368675,
+"ir": 294170.87776683416,
 "fiscais": 99735.259901904,
 "adm": 105898.44777410252,
 "garagem": 100000.0,
 "outros": 267033.12862925924,
-"iss_fixo": 77805.14271696683,
+"iss_fixo": 78853.43489797915,
 "mot_fixo": 36097.56670529558,
 "limpeza": 39390.07658079999,
-"seguros": 22515.904606477925
+"seguros": 22435.446587207087
 },
 "tipos": {
 "midi": {
@@ -330,13 +427,13 @@ const NUM = {
 "custo": {
 "pessoal": 4.05,
 "diesel": 2.55,
-"onibus": 1.73,
-"pecas": 0.92,
-"impostos": 0.86,
+"onibus": 1.76,
+"pecas": 0.69,
+"impostos": 0.88,
 "oleo": 0.21,
 "pneus": 0.14
 },
-"total": 10.46
+"total": 10.28
 },
 "leve": {
 "preco": 790464,
@@ -346,13 +443,13 @@ const NUM = {
 "custo": {
 "pessoal": 4.05,
 "diesel": 2.77,
-"onibus": 1.76,
-"pecas": 0.94,
-"impostos": 0.86,
+"onibus": 1.79,
+"pecas": 0.7,
+"impostos": 0.88,
 "oleo": 0.21,
 "pneus": 0.14
 },
-"total": 10.73
+"total": 10.54
 },
 "padron": {
 "preco": 1055442,
@@ -362,13 +459,13 @@ const NUM = {
 "custo": {
 "pessoal": 4.05,
 "diesel": 3.37,
-"onibus": 2.35,
-"pecas": 1.25,
-"impostos": 0.86,
+"onibus": 2.4,
+"pecas": 0.93,
+"impostos": 0.88,
 "oleo": 0.21,
 "pneus": 0.14
 },
-"total": 12.23
+"total": 11.98
 },
 "articulado": {
 "preco": 1946460,
@@ -378,13 +475,13 @@ const NUM = {
 "custo": {
 "pessoal": 4.05,
 "diesel": 4.87,
-"onibus": 4.34,
-"pecas": 2.31,
-"impostos": 0.86,
+"onibus": 4.42,
+"pecas": 1.72,
+"impostos": 0.88,
 "oleo": 0.21,
 "pneus": 0.24
 },
-"total": 16.88
+"total": 16.39
 }
 },
 "motoristas": 185.67999999999998,
@@ -454,81 +551,124 @@ const NUM = {
 "P2": 6.976,
 "P1": 13.46,
 "F": 2593505
+},
+{
+"lab": "+ peças pela média de 11 cidades (24/11)",
+"rkm": 11.178,
+"mes": 6550589,
+"ano": 78607072,
+"P2": 6.693,
+"P1": 13.264,
+"F": 2628448
 }
 ],
 "cenarios": [
 {
 "lab": "Sem valor da frota no fim (como o Rio)",
-"rkm": 11.712,
-"mes": 6863442,
-"ano": 82361301,
-"P2": 6.976,
-"P1": 13.915,
-"F": 2775407
+"rkm": 11.489,
+"mes": 6732492,
+"ano": 80789904,
+"P2": 6.693,
+"P1": 13.719,
+"F": 2810350
 },
 {
 "lab": "Valor da frota no fim pela metade",
-"rkm": 11.557,
-"mes": 6772490,
-"ano": 81269885,
-"P2": 6.976,
-"P1": 13.687,
-"F": 2684456
+"rkm": 11.334,
+"mes": 6641541,
+"ano": 79698488,
+"P2": 6.693,
+"P1": 13.492,
+"F": 2719399
 },
 {
 "lab": "ISS de 5% (cadastro da NFS-e)",
-"rkm": 11.642,
-"mes": 6822203,
-"ano": 81866437,
-"P2": 7.123,
-"P1": 13.743,
-"F": 2648105
+"rkm": 11.414,
+"mes": 6688496,
+"ano": 80261958,
+"P2": 6.834,
+"P1": 13.543,
+"F": 2683784
 },
 {
 "lab": "ISS zero (a prefeitura pode isentar)",
-"rkm": 11.06,
-"mes": 6481093,
-"ano": 77773115,
-"P2": 6.767,
-"P1": 13.056,
-"F": 2515700
+"rkm": 10.843,
+"mes": 6354072,
+"ano": 76248860,
+"P2": 6.492,
+"P1": 12.866,
+"F": 2549594
 },
 {
 "lab": "Despesas gerais de 2% ao ano do preço do ônibus",
-"rkm": 11.279,
-"mes": 6609483,
-"ano": 79313801,
-"P2": 6.976,
-"P1": 13.28,
-"F": 2521449
+"rkm": 11.056,
+"mes": 6478534,
+"ano": 77742404,
+"P2": 6.693,
+"P1": 13.084,
+"F": 2556392
 },
 {
 "lab": "Despesas gerais de 4% ao ano do preço do ônibus",
-"rkm": 11.525,
-"mes": 6753595,
-"ano": 81043138,
-"P2": 6.976,
-"P1": 13.64,
-"F": 2665560
+"rkm": 11.301,
+"mes": 6622645,
+"ano": 79471741,
+"P2": 6.693,
+"P1": 13.444,
+"F": 2700504
 },
 {
 "lab": "Diesel de bomba (R$ 7,63)",
-"rkm": 11.903,
-"mes": 6974955,
-"ano": 83699456,
-"P2": 7.472,
-"P1": 13.963,
-"F": 2596563
+"rkm": 11.679,
+"mes": 6844005,
+"ano": 82128059,
+"P2": 7.189,
+"P1": 13.767,
+"F": 2631506
 },
 {
 "lab": "Diesel média de 12 meses (R$ 5,78)",
-"rkm": 11.022,
-"mes": 6458967,
-"ano": 77507607,
-"P2": 6.6,
-"P1": 13.078,
-"F": 2591185
+"rkm": 10.799,
+"mes": 6328017,
+"ano": 75936210,
+"P2": 6.317,
+"P1": 12.883,
+"F": 2626128
 }
+]
+},
+"pecas_cid": {
+"São Paulo": 1.1597,
+"Rio de Janeiro": 0.998,
+"Porto Alegre": 0.9678,
+"Rio Branco": 0.9341,
+"Juiz de Fora": 0.9155,
+"Manaus": 0.8885,
+"Grande Curitiba": 0.8871,
+"Campinas": 0.8202,
+"Curitiba": 0.5183,
+"Belo Horizonte": 0.4435,
+"Londrina": 0.3861
+},
+"pecas_media": 0.8108,
+"pecas_antp": 1.0854007483646189,
+"rkm_antp": 11.40194384336101,
+"pecas_cen": {
+"antp": [
+11.40194384336101,
+1.0854007483646189
+],
+"mediana": [
+11.259426871915336,
+0.8885
+],
+"p7": [
+11.330645035804938,
+0.9568616104948796
+],
+"cwb": [
+10.873757721041473,
+0.5183
 ]
 },
 "outros_det": {
@@ -536,7 +676,8 @@ const NUM = {
 "gerais": 207496.66874999998,
 "verificador": 2192.7875,
 "uniformes": 8810.933120000002,
-"apoio": 10000.0
+"apoio": 10000.0,
+"ambiental": 0.0
 },
 "desp_gerais_pct": 0.03,
 "apoio_valor": 920000.0,
@@ -568,7 +709,10 @@ const NUM = {
 };
 
 /* modelo da FEPESE a 586 mil km (gerado por fep_num.py) */
-const FEP = {"fep": {"km": 586000.0, "frota": 120, "oper": 108, "fkm": 1.0499999962468842, "rkm": 13.655569119076372, "conta_mes": 8002163.503778754, "conta_ano": 96025962.04534504, "P2": 3.6549152297193905, "F": 5860383.1791631915, "P1": 18.30587317762737, "cortes": {"300": 23.189525826930026, "400": 18.30587317762737, "450": 16.677988961193147, "500": 15.375681588045774}, "var": {"diesel": 2.417803491357813, "oleo": 0.22253699920456463, "pneus": 0.201851999278501, "pecas": 0.5336099980926665, "hora": 0, "soma": 3.375802487933545}, "itens_mes": {"motoristas": 3072584.98880028, "manutencao": 833525.64, "garagem": 50000.0, "embarcados": 47290.18, "adm": 7641.129999999997, "almox": 50067.25, "verif_pintura": 52192.7875, "diesel": 1416832.8459356783, "oleo": 130406.68153387487, "pneus": 118285.2715772016, "pecas": 312695.4588823026, "rps": 305794.41615831276, "iss": 240064.9051133626, "ir": 400660.59543974564, "capital": 964121.3528379956}, "fixos": {"mot_fixo": 3072584.98880028, "manutencao": 833525.64, "garagem": 50000.0, "outros": 157191.3475, "rps": 206487.75921027403, "ir": 400660.59543974564, "fiscais": 0, "limpeza": 0, "adm": 0, "seguros": 0, "capital": 964121.3528379966}, "tipos": {"midi": {"preco": 536019, "parcela": 7909, "consumo": 0.3756, "qtd": 8, "custo": {"pessoal": 7.02, "diesel": 2.42, "onibus": 1.54, "pecas": 0.53, "impostos": 1.09, "oleo": 0.22, "pneus": 0.2, "rps": 0.52}, "total": 13.54}, "leve": {"preco": 553943, "parcela": 7146, "consumo": 0.3756, "qtd": 86, "custo": {"pessoal": 7.02, "diesel": 2.42, "onibus": 1.39, "pecas": 0.53, "impostos": 1.09, "oleo": 0.22, "pneus": 0.2, "rps": 0.52}, "total": 13.39}, "padron": {"preco": 800864, "parcela": 10331, "consumo": 0.3756, "qtd": 17, "custo": {"pessoal": 7.02, "diesel": 2.42, "onibus": 2.01, "pecas": 0.53, "impostos": 1.09, "oleo": 0.22, "pneus": 0.2, "rps": 0.52}, "total": 14.01}, "articulado": {"preco": 1402443, "parcela": 18091, "consumo": 0.3756, "qtd": 9, "custo": {"pessoal": 7.02, "diesel": 2.42, "onibus": 3.51, "pecas": 0.53, "impostos": 1.09, "oleo": 0.22, "pneus": 0.2, "rps": 0.52}, "total": 15.51}}, "iss": 0.03, "rps_pct": 0.0502, "diesel": 6.13, "fu": 3.834, "enc": 0.6185, "sal": 3898.29, "ben": 1111.03, "mot_custo": 7420.412365, "motoristas": 414.072}, "fepaj": {"km": 586000.0, "frota": 120, "oper": 108, "fkm": 1.0499999962468842, "rkm": 16.51246493978041, "conta_mes": 9676304.454711322, "conta_ano": 116115653.45653586, "P2": 5.165431919926283, "F": 6649361.349634521, "P1": 21.788835294012586, "cortes": {"300": 27.32996975204135, "400": 21.788835294012586, "450": 19.941790474669663, "500": 18.464154619195323}, "var": {"diesel": 3.152171010732893, "oleo": 0.22253699920456463, "pneus": 0.158145427167522, "pecas": 1.238113009598976, "hora": 0, "soma": 4.770966446703955}, "itens_mes": {"motoristas": 3103738.5226220638, "manutencao": 833525.64, "garagem": 50000.0, "embarcados": 47290.18, "adm": 237139.19999999995, "almox": 50067.25, "verif_pintura": 52192.7875, "diesel": 1847172.2122894754, "oleo": 130406.68153387487, "pneus": 92673.2203201679, "pecas": 725534.2236250001, "rps": 359920.94387810724, "iss": 290289.13364133966, "ir": 516238.21403960534, "capital": 1340116.2452616878}, "fixos": {"mot_fixo": 3103738.5226220638, "manutencao": 833525.64, "garagem": 50000.0, "outros": 386689.4174999999, "rps": 219572.4697221276, "ir": 516238.21403960534, "fiscais": 0, "limpeza": 0, "adm": 0, "seguros": 0, "capital": 1340116.2452616887}, "tipos": {"midi": {"preco": 776500, "parcela": 11457, "consumo": 0.3876, "qtd": 8, "custo": {"pessoal": 7.46, "diesel": 2.68, "onibus": 2.2, "pecas": 1.05, "impostos": 1.38, "oleo": 0.22, "pneus": 0.15, "rps": 0.61}, "total": 15.75}, "leve": {"preco": 790464, "parcela": 10197, "consumo": 0.4218, "qtd": 86, "custo": {"pessoal": 7.46, "diesel": 2.91, "onibus": 1.96, "pecas": 1.07, "impostos": 1.38, "oleo": 0.22, "pneus": 0.15, "rps": 0.61}, "total": 15.76}, "padron": {"preco": 1055442, "parcela": 13615, "consumo": 0.513, "qtd": 17, "custo": {"pessoal": 7.46, "diesel": 3.54, "onibus": 2.62, "pecas": 1.43, "impostos": 1.38, "oleo": 0.22, "pneus": 0.15, "rps": 0.61}, "total": 17.41}, "articulado": {"preco": 1946460, "parcela": 25109, "consumo": 0.741, "qtd": 9, "custo": {"pessoal": 7.46, "diesel": 5.12, "onibus": 4.83, "pecas": 2.64, "impostos": 1.38, "oleo": 0.22, "pneus": 0.25, "rps": 0.61}, "total": 22.51}}, "iss": 0.03, "rps_pct": 0.0502, "diesel": 6.578, "fu": 3.834, "enc": 0.6378, "sal": 3898.29, "ben": 1111.03, "mot_custo": 7495.649361999999, "motoristas": 414.072}, "passos": [["FEPESE como está no papel", 13.655569119076372], ["Diesel de 2026 (R$ 6,578) com consumo com ar", 14.453522980973956], ["Pneus de compras reais", 14.406032008012712], ["Peças pela tabela da ANTP", 14.785205184377121], ["Preço real dos ônibus", 16.02915346483531], ["Encargos de 63,78%", 16.086919694393803], ["Despesas de administração de 3% ao ano", 16.51246493978041]], "ese": {"fu3": 15.26057608350475, "fu25": 14.510043196049319, "sem_rps": 15.572756438093046, "fu3_sem_rps": 14.409356487175085, "papel_799": 10.99}, "adm3": 237139.19999999998, "almox": 50067.25, "adm_papel": 7641.13, "precos_papel": {"Midi": 536019.42, "Leve": 553943.44, "Padron": 800863.94, "Articulado": 1402443.06}, "cons_aj": {"Midi": 0.3876, "Leve": 0.4218, "Padron": 0.513, "Articulado": 0.741}, "cons_sem_ar": {"Midi": 0.34, "Leve": 0.37, "Padron": 0.45, "Articulado": 0.65}};
+const FEP = {"fep": {"km": 586000.0, "frota": 120, "oper": 108, "fkm": 1.0499999962468842, "rkm": 13.655569119076372, "conta_mes": 8002163.503778754, "conta_ano": 96025962.04534504, "P2": 3.6549152297193905, "F": 5860383.1791631915, "P1": 18.30587317762737, "cortes": {"300": 23.189525826930026, "400": 18.30587317762737, "450": 16.677988961193147, "500": 15.375681588045774}, "var": {"diesel": 2.417803491357813, "oleo": 0.22253699920456463, "pneus": 0.201851999278501, "pecas": 0.5336099980926665, "hora": 0, "soma": 3.375802487933545}, "itens_mes": {"motoristas": 3072584.98880028, "manutencao": 833525.64, "garagem": 50000.0, "embarcados": 47290.18, "adm": 7641.129999999997, "almox": 50067.25, "verif_pintura": 52192.7875, "ambiental": 0.0, "diesel": 1416832.8459356783, "oleo": 130406.68153387487, "pneus": 118285.2715772016, "pecas": 312695.4588823026, "rps": 305794.41615831276, "iss": 240064.9051133626, "ir": 400660.59543974564, "capital": 964121.3528379956}, "fixos": {"mot_fixo": 3072584.98880028, "manutencao": 833525.64, "garagem": 50000.0, "outros": 157191.3475, "rps": 206487.75921027403, "ir": 400660.59543974564, "fiscais": 0, "limpeza": 0, "adm": 0, "seguros": 0, "capital": 964121.3528379966}, "tipos": {"midi": {"preco": 536019, "parcela": 7909, "consumo": 0.3756, "qtd": 8, "custo": {"pessoal": 7.02, "diesel": 2.42, "onibus": 1.54, "pecas": 0.53, "impostos": 1.09, "oleo": 0.22, "pneus": 0.2, "rps": 0.52}, "total": 13.54}, "leve": {"preco": 553943, "parcela": 7146, "consumo": 0.3756, "qtd": 86, "custo": {"pessoal": 7.02, "diesel": 2.42, "onibus": 1.39, "pecas": 0.53, "impostos": 1.09, "oleo": 0.22, "pneus": 0.2, "rps": 0.52}, "total": 13.39}, "padron": {"preco": 800864, "parcela": 10331, "consumo": 0.3756, "qtd": 17, "custo": {"pessoal": 7.02, "diesel": 2.42, "onibus": 2.01, "pecas": 0.53, "impostos": 1.09, "oleo": 0.22, "pneus": 0.2, "rps": 0.52}, "total": 14.01}, "articulado": {"preco": 1402443, "parcela": 18091, "consumo": 0.3756, "qtd": 9, "custo": {"pessoal": 7.02, "diesel": 2.42, "onibus": 3.51, "pecas": 0.53, "impostos": 1.09, "oleo": 0.22, "pneus": 0.2, "rps": 0.52}, "total": 15.51}}, "iss": 0.03, "rps_pct": 0.0502, "diesel": 6.13, "fu": 3.834, "enc": 0.6185, "sal": 3898.29, "ben": 1111.03, "mot_custo": 7420.412365, "motoristas": 414.072}, "fepaj": {"km": 586000.0, "frota": 120, "oper": 108, "fkm": 1.0499999962468842, "rkm": 16.51246493978041, "conta_mes": 9676304.454711322, "conta_ano": 116115653.45653586, "P2": 5.165431919926283, "F": 6649361.349634521, "P1": 21.788835294012586, "cortes": {"300": 27.32996975204135, "400": 21.788835294012586, "450": 19.941790474669663, "500": 18.464154619195323}, "var": {"diesel": 3.152171010732893, "oleo": 0.22253699920456463, "pneus": 0.158145427167522, "pecas": 1.238113009598976, "hora": 0, "soma": 4.770966446703955}, "itens_mes": {"motoristas": 3103738.5226220638, "manutencao": 833525.64, "garagem": 50000.0, "embarcados": 47290.18, "adm": 237139.19999999995, "almox": 50067.25, "verif_pintura": 52192.7875, "ambiental": 0.0, "diesel": 1847172.2122894754, "oleo": 130406.68153387487, "pneus": 92673.2203201679, "pecas": 725534.2236250001, "rps": 359920.94387810724, "iss": 290289.13364133966, "ir": 516238.21403960534, "capital": 1340116.2452616878}, "fixos": {"mot_fixo": 3103738.5226220638, "manutencao": 833525.64, "garagem": 50000.0, "outros": 386689.4174999999, "rps": 219572.4697221276, "ir": 516238.21403960534, "fiscais": 0, "limpeza": 0, "adm": 0, "seguros": 0, "capital": 1340116.2452616887}, "tipos": {"midi": {"preco": 776500, "parcela": 11457, "consumo": 0.3876, "qtd": 8, "custo": {"pessoal": 7.46, "diesel": 2.68, "onibus": 2.2, "pecas": 1.05, "impostos": 1.38, "oleo": 0.22, "pneus": 0.15, "rps": 0.61}, "total": 15.75}, "leve": {"preco": 790464, "parcela": 10197, "consumo": 0.4218, "qtd": 86, "custo": {"pessoal": 7.46, "diesel": 2.91, "onibus": 1.96, "pecas": 1.07, "impostos": 1.38, "oleo": 0.22, "pneus": 0.15, "rps": 0.61}, "total": 15.76}, "padron": {"preco": 1055442, "parcela": 13615, "consumo": 0.513, "qtd": 17, "custo": {"pessoal": 7.46, "diesel": 3.54, "onibus": 2.62, "pecas": 1.43, "impostos": 1.38, "oleo": 0.22, "pneus": 0.15, "rps": 0.61}, "total": 17.41}, "articulado": {"preco": 1946460, "parcela": 25109, "consumo": 0.741, "qtd": 9, "custo": {"pessoal": 7.46, "diesel": 5.12, "onibus": 4.83, "pecas": 2.64, "impostos": 1.38, "oleo": 0.22, "pneus": 0.25, "rps": 0.61}, "total": 22.51}}, "iss": 0.03, "rps_pct": 0.0502, "diesel": 6.578, "fu": 3.834, "enc": 0.6378, "sal": 3898.29, "ben": 1111.03, "mot_custo": 7495.649361999999, "motoristas": 414.072}, "passos": [["FEPESE como está no papel", 13.655569119076372], ["Diesel de 2026 (R$ 6,578) com consumo com ar", 14.453522980973956], ["Pneus de compras reais", 14.406032008012712], ["Peças pela tabela da ANTP", 14.785205184377121], ["Preço real dos ônibus", 16.02915346483531], ["Encargos de 63,78%", 16.086919694393803], ["Despesas de administração de 3% ao ano", 16.51246493978041]], "ese": {"fu3": 15.26057608350475, "fu25": 14.510043196049319, "sem_rps": 15.572756438093046, "fu3_sem_rps": 14.409356487175085, "papel_799": 10.99}, "adm3": 237139.19999999998, "amb1": 77737.2, "almox": 50067.25, "adm_papel": 7641.13, "precos_papel": {"Midi": 536019.42, "Leve": 553943.44, "Padron": 800863.94, "Articulado": 1402443.06}, "cons_aj": {"Midi": 0.3876, "Leve": 0.4218, "Padron": 0.513, "Articulado": 0.741}, "cons_sem_ar": {"Midi": 0.34, "Leve": 0.37, "Padron": 0.45, "Articulado": 0.65}};
+
+/* Foz com os coeficientes de outras cidades (gerado por gera_cid.py) */
+const CID = {"cid_bh": {"km": 586000, "frota": 105, "oper": 88, "rkm": 11.976574630046555, "conta_mes": 7018272.733207281, "conta_ano": 84219272.79848737, "P2": 6.664039805787421, "F": 3113145.407015852, "P1": 14.446903323327051, "cortes": {"300": 17.041191162506927, "400": 14.446903323327051, "450": 13.582140710267092, "500": 12.890330619819125}, "var": {"diesel": 3.0052814628571434, "oleo": 0.2387401774116797, "pneus": 0.1173, "pecas": 0.4435, "hora": 2.1295064262345678, "soma": 5.934328066503391}, "itens_mes": {"motoristas": 1766849.7782416802, "diesel": 1761094.937234286, "pecas": 259891.0, "manutencao": 711736.0105633332, "ir": 0.0, "fiscais": 91468.78719783202, "iss": 294767.4547947058, "oleo": 139901.74396324428, "adm": 0.0, "garagem": 100000.0, "pneus": 68737.8, "outros": 177890.42422640952, "limpeza": 0.0, "seguros": 22370.25, "rps": 386575.5074421503, "capital": 1236989.0395436399}, "fixos": {"capital": 1236989.0395436399, "manutencao": 711736.0105633332, "ir": 0.0, "fiscais": 91468.78719783202, "adm": 0.0, "garagem": 100000.0, "outros": 177890.42422640952, "iss_fixo": 130752.10709466581, "mot_fixo": 518959.01246822346, "limpeza": 0.0, "seguros": 22370.25, "rps": 122979.77592174901}, "tipos": {"midi": {"preco": 776500, "parcela": 8892, "consumo": 0.3876, "qtd": 7, "custo": {"pessoal": 4.86, "diesel": 2.55, "onibus": 1.79, "pecas": 0.38, "impostos": 0.54, "oleo": 0.24, "pneus": 0.11, "rps": 0.66}, "total": 11.13}, "leve": {"preco": 790464, "parcela": 9052, "consumo": 0.4218, "qtd": 75, "custo": {"pessoal": 4.86, "diesel": 2.77, "onibus": 1.82, "pecas": 0.38, "impostos": 0.54, "oleo": 0.24, "pneus": 0.11, "rps": 0.66}, "total": 11.38}, "padron": {"preco": 1055442, "parcela": 12087, "consumo": 0.513, "qtd": 15, "custo": {"pessoal": 4.86, "diesel": 3.37, "onibus": 2.43, "pecas": 0.51, "impostos": 0.54, "oleo": 0.24, "pneus": 0.11, "rps": 0.66}, "total": 12.72}, "articulado": {"preco": 1946460, "parcela": 22291, "consumo": 0.741, "qtd": 8, "custo": {"pessoal": 4.86, "diesel": 4.87, "onibus": 4.49, "pecas": 0.94, "impostos": 0.54, "oleo": 0.24, "pneus": 0.19, "rps": 0.66}, "total": 16.79}}, "motoristas": 256.08000000000004, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.4849, "mot_custo": 6899.600821, "iss": 0.041999999999999996, "taxa": 0.09372, "rps_pct": 0.0758, "fu": 2.91, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 102056.6829015544, "verificador": 2192.7875, "uniformes": 11170.741120000002, "apoio": 10000.0, "ambiental": 13937.473445595857}, "consumo_media": 0.45686857142857146, "cid": {"nome": "Belo Horizonte", "uf": "MG", "ano": "projeção 2026", "frota": "2.702 ônibus", "itens": [["Diesel", "só informa o total de litros (média de 0,53 l/km, com articulados do MOVE e muita subida)", "consumo de Foz (0,422 l/km no básico)", null], ["Óleo e Arla 32", "R$ 0,1947 por km sobre R$ 2,4509 de diesel", "7,9% do custo do diesel", "bh"], ["Pneus", "R$ 0,1173 por km", "R$ 0,1173 por km", "bh"], ["Peças", "R$ 0,4435 por km", "R$ 0,4435 por km", "bh"], ["Motoristas por ônibus", "2,91", "2,91", "bh"], ["Manutenção, administração e diretoria", "38,30% do pessoal de operação", "38,30%", "bh"], ["Encargos sobre salário", "48,49% + 1,2% sobre a receita (INSS)", "48,49% + 1,2%", "bh"], ["Despesas gerais", "R$ 2,63 milhões por mês para 2.702 ônibus", "R$ 972 por ônibus por mês", "bh"], ["Custo ambiental", "R$ 358.658 por mês", "R$ 133 por ônibus por mês", "bh"], ["Seguro de responsabilidade civil", "R$ 213,05 por ônibus por mês", "R$ 213,05", "bh"], ["Retorno do capital", "9,372% ao ano", "9,372%", "bh"], ["Lucro sobre os custos (RPS)", "7,58%", "7,58%", "bh"], ["Imposto de renda", "não é linha da planilha: sai da remuneração", "fora da conta", "bh"], ["Vida útil e valor de revenda do ônibus", "não informa os números", "os de Foz (12 anos, 10%)", null]], "rot": {}, "docs": [["Informação Técnica SUMOB nº 005/2025 (custos de 2026), p. 3 a 10", "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 10.681122695106238, "conta_fu_foz": 6259137.899332255, "fu_cidade": 2.91}}, "cid_poa": {"km": 586000, "frota": 105, "oper": 88, "rkm": 11.356270571434948, "conta_mes": 6654774.55486088, "conta_ano": 79857294.65833056, "P2": 7.06032828369333, "F": 2517422.1806165883, "P1": 13.3538837352348, "cortes": {"300": 15.451735552415292, "400": 13.3538837352348, "450": 12.654599796174637, "500": 12.095172644926507}, "var": {"diesel": 2.9354574743886745, "oleo": 0.09775073389714285, "pneus": 0.1362178568911402, "pecas": 0.9677971717576787, "hora": 2.169933137345679, "soma": 6.307156374280315}, "itens_mes": {"motoristas": 1481870.6492092442, "diesel": 1720178.0799917632, "pecas": 567129.1426499997, "manutencao": 500247.9881545612, "ir": 0.0, "fiscais": 113410.37024878, "iss": 279500.53130415693, "oleo": 57281.93006372571, "adm": 0.0, "garagem": 100000.0, "pneus": 79823.66413820814, "outros": 465476.9755314763, "limpeza": 0.0, "seguros": 939.486555, "rps": 368252.3399456957, "capital": 920663.3970682686}, "fixos": {"capital": 920663.3970682686, "manutencao": 500247.9881545612, "ir": 0.0, "fiscais": 113410.37024878, "adm": 0.0, "garagem": 100000.0, "outros": 465476.9755314763, "iss_fixo": 105731.73158589669, "mot_fixo": 210289.83072467614, "limpeza": 0.0, "seguros": 939.486555, "rps": 100662.40074792912}, "tipos": {"midi": {"preco": 776500, "parcela": 6677, "consumo": 0.3786, "qtd": 7, "custo": {"pessoal": 4.54, "diesel": 2.49, "onibus": 1.33, "pecas": 0.82, "impostos": 0.48, "oleo": 0.1, "pneus": 0.13, "rps": 0.63}, "total": 10.52}, "leve": {"preco": 790464, "parcela": 6797, "consumo": 0.412, "qtd": 75, "custo": {"pessoal": 4.54, "diesel": 2.71, "onibus": 1.36, "pecas": 0.84, "impostos": 0.48, "oleo": 0.1, "pneus": 0.13, "rps": 0.63}, "total": 10.79}, "padron": {"preco": 1055442, "parcela": 9075, "consumo": 0.5011, "qtd": 15, "custo": {"pessoal": 4.54, "diesel": 3.3, "onibus": 1.81, "pecas": 1.12, "impostos": 0.48, "oleo": 0.1, "pneus": 0.13, "rps": 0.63}, "total": 12.11}, "articulado": {"preco": 1946460, "parcela": 16737, "consumo": 0.7238, "qtd": 8, "custo": {"pessoal": 4.54, "diesel": 4.76, "onibus": 3.34, "pecas": 2.06, "impostos": 0.48, "oleo": 0.1, "pneus": 0.22, "rps": 0.63}, "total": 16.13}}, "motoristas": 210.77492041220455, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.5185, "mot_custo": 7030.5833649999995, "iss": 0.041999999999999996, "taxa": 0.043, "rps_pct": 0.0724, "fu": 2.395169550138688, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 404973.96911999997, "verificador": 2192.7875, "uniformes": 9777.479652217098, "apoio": 10000.0, "ambiental": 0.0}, "consumo_media": 0.4462537966537966, "cid": {"nome": "Porto Alegre", "uf": "RS", "ano": "tarifa 2026", "frota": "1.218 ônibus", "itens": [["Diesel", "0,4120 l/km no ônibus leve com ar (o mesmo tipo do básico de Foz)", "0,412 l/km", "poa_par"], ["Óleo e Arla 32", "índices 0,0258 (óleo) e 0,0075 (Arla) sobre o diesel", "3,3% do custo do diesel", "poa_par"], ["Pneus", "vida de 156.071 km", "156.071 km, com o preço de Foz", "poa_par"], ["Peças", "coeficiente 0,0059 do preço do ônibus por mês", "7,1% do preço por ano", "poa_par"], ["Motoristas por ônibus", "não informa; calculamos 2,40 pelo custo dos motoristas (R$ 2,6918/km)", "2,40", "poa_par"], ["Fiscais por ônibus", "0,2395", "0,2395", "poa_par"], ["Manutenção e administração", "fatores 0,2119 e 0,1017: 31,4% do pessoal de operação", "31,4%", "poa_par"], ["Encargos sobre salário", "51,85% + 1,2% sobre a receita", "51,85% + 1,2%", "poa_par"], ["Despesas gerais", "outras despesas, honorários e sistema de planejamento: R$ 0,73 por km", "R$ 3.854 por ônibus por mês", "poa_par"], ["Custo ambiental", "não tem", "zero", "poa_pla"], ["Seguros", "R$ 0,0017 por km", "R$ 9 por ônibus por mês", "poa_par"], ["Retorno do capital", "4,30% ao ano sobre a frota", "4,30%", "poa_par"], ["Lucro sobre os custos (RPS)", "7,24%", "7,24%", "poa_par"], ["Imposto de renda", "não é linha da planilha: sai da remuneração", "fora da conta", "poa_pla"], ["Valor de revenda do ônibus", "8%", "8%", "poa_par"]], "rot": {}, "docs": [["Parecer técnico da revisão tarifária 2026 (EPTC), p. 4 a 11", "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf"], ["Planilha da tarifa técnica 2026", "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 10.91222686599389, "conta_fu_foz": 6394564.94347242, "fu_cidade": 2.395169550138688}}, "cid_cwb": {"km": 586000, "frota": 105, "oper": 88, "rkm": 11.911669592301944, "conta_mes": 6980238.3810889395, "conta_ano": 83762860.57306728, "P2": 6.386503034386962, "F": 3237747.60293818, "P1": 14.480872041732411, "cortes": {"300": 17.178995044180894, "400": 14.480872041732411, "450": 13.581497707582917, "500": 12.861998240263322}, "var": {"diesel": 2.8998329904761904, "oleo": 0.16910441513009872, "pneus": 0.313, "pecas": 0.5183, "hora": 2.2180325013364195, "soma": 6.118269906942709}, "itens_mes": {"motoristas": 1535578.613960564, "diesel": 1699302.1324190476, "pecas": 303723.8, "manutencao": 350985.50753300317, "ir": 330502.28643700003, "fiscais": 62985.12936727441, "iss": 293170.0120057354, "oleo": 99095.18726623784, "adm": 187370.75517859243, "garagem": 100000.0, "pneus": 183418.0, "outros": 485210.15737416106, "limpeza": 37757.376348472, "seguros": 22548.459892223676, "rps": 0.0, "capital": 1288590.9633066282}, "fixos": {"capital": 1288590.9633066282, "manutencao": 350985.50753300317, "ir": 330502.28643700003, "fiscais": 62985.12936727441, "adm": 187370.75517859243, "garagem": 100000.0, "outros": 485210.15737416106, "iss_fixo": 135985.39932340354, "mot_fixo": 235811.56817742204, "limpeza": 37757.376348472, "seguros": 22548.459892223676, "rps": 0.0}, "tipos": {"midi": {"preco": 776500, "parcela": 9262, "consumo": 0.374, "qtd": 7, "custo": {"pessoal": 4.71, "diesel": 2.46, "onibus": 1.87, "pecas": 0.44, "impostos": 1.1, "oleo": 0.17, "pneus": 0.3}, "total": 11.05}, "leve": {"preco": 790464, "parcela": 9429, "consumo": 0.407, "qtd": 75, "custo": {"pessoal": 4.71, "diesel": 2.68, "onibus": 1.9, "pecas": 0.45, "impostos": 1.1, "oleo": 0.17, "pneus": 0.3}, "total": 11.31}, "padron": {"preco": 1055442, "parcela": 12589, "consumo": 0.495, "qtd": 15, "custo": {"pessoal": 4.71, "diesel": 3.26, "onibus": 2.54, "pecas": 0.6, "impostos": 1.1, "oleo": 0.17, "pneus": 0.3}, "total": 12.68}, "articulado": {"preco": 1946460, "parcela": 23217, "consumo": 0.715, "qtd": 8, "custo": {"pessoal": 4.71, "diesel": 4.7, "onibus": 4.68, "pecas": 1.1, "impostos": 1.1, "oleo": 0.17, "pneus": 0.5}, "total": 16.96}}, "motoristas": 213.6776699029126, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.558477, "mot_custo": 7186.42530433, "iss": 0.041999999999999996, "taxa": 0.1014, "rps_pct": 0.0, "fu": 2.428155339805825, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 424932.84951975616, "verificador": 2192.7875, "uniformes": 9551.78109514563, "apoio": 10000.0, "ambiental": 0.0}, "consumo_media": 0.4408380952380952, "cid": {"nome": "Curitiba", "uf": "PR", "ano": "junho de 2026", "frota": "1.030 ônibus rodando", "itens": [["Diesel", "0,407 l/km no ônibus comum com ar (nova concessão)", "0,407 l/km", "cwb_nc"], ["Óleo e Arla 32", "R$ 0,1154 por km sobre R$ 1,9789 de diesel", "5,8% do custo do diesel", "cwb_res"], ["Pneus", "R$ 0,3130 por km", "R$ 0,3130 por km", "cwb_res"], ["Peças", "R$ 0,5183 por km (já com serviços de terceiros)", "R$ 0,5183 por km", "cwb_res"], ["Motoristas por ônibus", "2.501 motoristas para 1.030 ônibus rodando", "2,43", "cwb_pes"], ["Fiscais, manutenção e limpeza por ônibus", "0,13 · 0,58 · 0,10", "0,13 · 0,58 · 0,10", "cwb_pes"], ["Administração", "R$ 0,4427 por km sobre R$ 4,6954 de pessoal", "9,4% do pessoal", "cwb_res"], ["Encargos sobre salário", "55,85% + 1,2% sobre a receita", "55,85% + 1,2%", "cwb_res"], ["Despesas administrativas", "R$ 0,7226 por km", "R$ 4.047 por ônibus por mês", "cwb_res"], ["Custo ambiental", "não tem", "zero", "cwb_res"], ["Retorno do capital", "10,14% ao ano (nova concessão)", "10,14%", "cwb_nc"], ["Taxa de gerenciamento da URBS (4%)", "tem", "fora: Foz não cobra", "cwb_res"], ["Vida útil e revenda do ônibus", "não informa por tipo", "os de Foz", null]], "rot": {}, "docs": [["Resolução URBS DIR 021/2026: custo por km de junho/2026 (ônibus comum)", "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf"], ["URBS: pessoal e frota de janeiro/2026", "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf"], ["URBS: planilhas econômico-financeiras da nova concessão (2026)", "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 11.51492910633402, "conta_fu_foz": 6747748.456311735, "fu_cidade": 2.428155339805825}}, "cid_lon": {"km": 586000, "frota": 105, "oper": 88, "rkm": 11.139993664353831, "conta_mes": 6528036.287311345, "conta_ano": 78336435.44773614, "P2": 6.3167612654921435, "F": 2826414.185732949, "P1": 13.382796729824516, "cortes": {"300": 15.738141884601974, "400": 13.382796729824516, "450": 12.59768167823203, "500": 11.969589636958041}, "var": {"diesel": 2.9841450230153566, "oleo": 0.05191638677100231, "pneus": 0.12650547062130896, "pecas": 0.38609973721300866, "hora": 2.196744134762832, "soma": 5.745410752383508}, "itens_mes": {"motoristas": 1903668.9569013594, "diesel": 1748708.9834869988, "pecas": 226254.44600682307, "manutencao": 178734.37900493643, "ir": 0.0, "fiscais": 143380.69181025802, "iss": 274177.52406707645, "oleo": 30423.002647807356, "adm": 0.0, "garagem": 100000.0, "pneus": 74132.20578408705, "outros": 297831.7110163614, "limpeza": 0.0, "seguros": 22377.313750829315, "rps": 251718.55672473117, "capital": 1276628.5161100766}, "fixos": {"capital": 1276628.5161100766, "manutencao": 178734.37900493643, "ir": 0.0, "fiscais": 143380.69181025802, "adm": 0.0, "garagem": 100000.0, "outros": 297831.7110163614, "iss_fixo": 118709.39580078382, "mot_fixo": 616376.89393034, "limpeza": 0.0, "seguros": 22377.313750829315, "rps": 72375.28430936378}, "tipos": {"midi": {"preco": 776500, "parcela": 9194, "consumo": 0.3849, "qtd": 7, "custo": {"pessoal": 4.48, "diesel": 2.53, "onibus": 1.85, "pecas": 0.33, "impostos": 0.51, "oleo": 0.05, "pneus": 0.12, "rps": 0.43}, "total": 10.3}, "leve": {"preco": 790464, "parcela": 9360, "consumo": 0.4188, "qtd": 75, "custo": {"pessoal": 4.48, "diesel": 2.76, "onibus": 1.88, "pecas": 0.33, "impostos": 0.51, "oleo": 0.05, "pneus": 0.12, "rps": 0.43}, "total": 10.56}, "padron": {"preco": 1055442, "parcela": 12497, "consumo": 0.5094, "qtd": 15, "custo": {"pessoal": 4.48, "diesel": 3.35, "onibus": 2.51, "pecas": 0.45, "impostos": 0.51, "oleo": 0.05, "pneus": 0.12, "rps": 0.43}, "total": 11.9}, "articulado": {"preco": 1946460, "parcela": 23047, "consumo": 0.7358, "qtd": 8, "custo": {"pessoal": 4.48, "diesel": 4.84, "onibus": 4.63, "pecas": 0.82, "impostos": 0.51, "oleo": 0.05, "pneus": 0.2, "rps": 0.43}, "total": 15.96}}, "motoristas": 267.46498961528437, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.540783522167816, "mot_custo": 7117.4509966315745, "iss": 0.041999999999999996, "taxa": 0.1, "rps_pct": 0.053268, "fu": 3.0393748819918676, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 235253.1470954098, "verificador": 2192.7875, "uniformes": 11853.037161692377, "apoio": 10000.0, "ambiental": 0.0}, "consumo_media": 0.4536553698715956, "cid": {"nome": "Londrina", "uf": "PR", "ano": "tarifa 2026", "frota": "378 ônibus (2 áreas)", "itens": [["Diesel", "média da frota 0,454 l/km (Foz: 0,457)", "consumo de Foz × 0,993", "lon1"], ["Óleo e Arla 32", "R$ 0,034 e R$ 0,036 por km", "1,7% do custo do diesel", "lon2"], ["Pneus", "R$ 0,1449 e R$ 0,0939 por km", "R$ 0,1265 por km", "lon1"], ["Peças", "R$ 0,3628 e R$ 0,4274 por km", "R$ 0,3861 por km", "lon1"], ["Motoristas por ônibus", "3,159 e 2,827", "3,04", "lon1"], ["Fiscais por ônibus", "0,306 e 0,286", "0,299", "lon1"], ["Manutenção, administração e diretoria", "fatores 0,081/0,104 e 0,231/0,143 e diretoria", "8,7% do pessoal de operação", "lon2"], ["Encargos sobre salário", "54,11% e 54,02% + 1,2% sobre a receita", "54,1% + 1,2%", "lon1"], ["Despesas administrativas", "R$ 2.663,40 por ônibus por mês (Área 1) e R$ 199.780,60 para 134 ônibus (Área 2)", "R$ 2.241 por ônibus por mês", "lon1"], ["Custo ambiental", "não tem", "zero", "lon2"], ["Retorno do capital", "Selic, limitada a 10% ao ano", "10%", "lon1"], ["Lucro sobre os custos", "5,33% (remuneração pela operação)", "5,33%", "lon1"], ["Imposto de renda", "não é linha da planilha: sai da remuneração", "fora da conta", "lon1"], ["Taxa de gerenciamento da CMTU (4%)", "tem", "fora: Foz não cobra", "lon1"]], "rot": {}, "docs": [["CMTU: planilha de cálculo tarifário 2026, Área 1", "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf"], ["CMTU: planilha de cálculo tarifário 2026, Área 2", "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 9.943768123777225, "conta_fu_foz": 5827048.120533454, "fu_cidade": 3.0393748819918676}}, "cid_mao": {"km": 586000, "frota": 105, "oper": 88, "rkm": 11.207915862475451, "conta_mes": 6567838.695410614, "conta_ano": 78814064.34492737, "P2": 7.2524420897294055, "F": 2317907.6308291825, "P1": 13.047211166802363, "cortes": {"300": 14.978800859160014, "400": 13.047211166802363, "450": 12.403347936016477, "500": 11.888257351387772}, "var": {"diesel": 3.3344516942084943, "oleo": 0.31617081492921495, "pneus": 0.26017282581237133, "pecas": 0.8885143526023894, "hora": 2.1195200660493825, "soma": 6.918829753601853}, "itens_mes": {"motoristas": 1275110.0541995198, "diesel": 1953988.6928061778, "pecas": 520669.4106250002, "manutencao": 273503.239524064, "ir": 0.0, "fiscais": 92406.1434208, "iss": 302120.57998888823, "oleo": 185276.09754851996, "adm": 0.0, "garagem": 100000.0, "pneus": 152461.2759260496, "outros": 197876.42165925927, "limpeza": 0.0, "seguros": 22401.392230354697, "rps": 0.0, "capital": 1492025.38748198}, "fixos": {"capital": 1492025.38748198, "manutencao": 273503.239524064, "ir": 0.0, "fiscais": 92406.1434208, "adm": 0.0, "garagem": 100000.0, "outros": 197876.42165925927, "iss_fixo": 106623.75101814239, "mot_fixo": 33071.29549458157, "limpeza": 0.0, "seguros": 22401.392230354697, "rps": 0.0}, "tipos": {"midi": {"preco": 776500, "parcela": 10715, "consumo": 0.4301, "qtd": 7, "custo": {"pessoal": 3.31, "diesel": 2.83, "onibus": 2.16, "pecas": 0.75, "impostos": 0.55, "oleo": 0.32, "pneus": 0.25}, "total": 10.17}, "leve": {"preco": 790464, "parcela": 10908, "consumo": 0.468, "qtd": 75, "custo": {"pessoal": 3.31, "diesel": 3.08, "onibus": 2.2, "pecas": 0.77, "impostos": 0.55, "oleo": 0.32, "pneus": 0.25}, "total": 10.48}, "padron": {"preco": 1055442, "parcela": 14564, "consumo": 0.5692, "qtd": 15, "custo": {"pessoal": 3.31, "diesel": 3.74, "onibus": 2.94, "pecas": 1.02, "impostos": 0.55, "oleo": 0.32, "pneus": 0.25}, "total": 12.13}, "articulado": {"preco": 1946460, "parcela": 26859, "consumo": 0.8222, "qtd": 8, "custo": {"pessoal": 3.31, "diesel": 5.41, "onibus": 5.41, "pecas": 1.89, "impostos": 0.55, "oleo": 0.32, "pneus": 0.41}, "total": 17.3}}, "motoristas": 185.67999999999998, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.4766, "mot_custo": 6867.245013999999, "iss": 0.046, "taxa": 0.12, "rps_pct": 0.0, "fu": 2.11, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 138331.11250000002, "verificador": 2192.7875, "uniformes": 8819.782400000002, "apoio": 10000.0, "ambiental": 0.0}, "consumo_media": 0.5069096525096525, "cid": {"nome": "Manaus", "uf": "AM", "ano": "junho de 2025", "frota": "sistema convencional", "itens": [["Diesel", "0,468 l/km no convencional com ar", "0,468 l/km", "mao"], ["Óleo e Arla 32", "óleo: 4% do litro de diesel por km; Arla: 3% do diesel", "9,5% do custo do diesel", "mao"], ["Pneus", "vida de 98.398 km com 2,21 recapagens", "98.398 km e 2,21, com o preço de Foz", "mao"], ["Peças", "de 4% a 9% do preço do ônibus por ano; não diz qual vale para o convencional", "6,5% (o meio da faixa)", "mao"], ["Motoristas por ônibus", "calculado todo mês; o número não aparece", "o de Foz (2,11)", null], ["Fiscais por ônibus", "0,20", "0,20", "mao"], ["Manutenção e administração", "fatores 0,12 e 0,08 sobre o pessoal de operação", "20%", "mao"], ["Encargos sobre salário", "47,66% + INSS sobre a receita (o texto fala em 1,6% e em 2%)", "47,66% + 1,6%", "mao"], ["Despesas gerais", "2% do preço do ônibus por ano", "R$ 1.317 por ônibus por mês", "mao"], ["Custo ambiental", "não tem", "zero", "mao"], ["Retorno do capital", "12% ao ano", "12%", "mao"], ["Imposto de renda", "não é linha da planilha: sai da remuneração", "fora da conta", "mao"], ["Vida útil e revenda do ônibus", "10 anos e 20%", "10 anos e 20%", "mao"]], "rot": {}, "docs": [["IMMU: metodologia de cálculo da remuneração, junho/2025", "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 11.207915862475451, "conta_fu_foz": 6567838.695410614, "fu_cidade": 2.11}}, "cid_jf": {"km": 586000, "frota": 105, "oper": 88, "rkm": 11.592747063569908, "conta_mes": 6793349.779251966, "conta_ano": 81520197.35102358, "P2": 7.047467096956063, "F": 2663534.060435713, "P1": 13.706302248045345, "cortes": {"300": 15.925913965075104, "400": 13.706302248045345, "450": 12.966431675702092, "500": 12.37453521782749}, "var": {"diesel": 3.162029192072072, "oleo": 0.212, "pneus": 0.23307916666666664, "pecas": 0.9154627, "hora": 2.313472025308642, "soma": 6.836043084047381}, "itens_mes": {"motoristas": 1391792.1735361598, "diesel": 1852949.1065542342, "pecas": 536461.1422, "manutencao": 366768.30343647994, "ir": 332943.0864350012, "fiscais": 99735.259901904, "iss": 203800.49337755897, "oleo": 124232.0, "adm": 105898.44777410252, "garagem": 100000.0, "pneus": 136584.39166666666, "outros": 267033.12862925924, "limpeza": 39390.07658079999, "seguros": 22536.168577639804, "rps": 0.0, "capital": 1213226.0005821595}, "fixos": {"capital": 1213226.0005821595, "manutencao": 366768.30343647994, "ir": 332943.0864350012, "fiscais": 99735.259901904, "adm": 105898.44777410252, "garagem": 100000.0, "outros": 267033.12862925924, "iss_fixo": 79906.02181307139, "mot_fixo": 36097.56670529558, "limpeza": 39390.07658079999, "seguros": 22536.168577639804, "rps": 0.0}, "tipos": {"midi": {"preco": 776500, "parcela": 8651, "consumo": 0.4078, "qtd": 7, "custo": {"pessoal": 4.05, "diesel": 2.68, "onibus": 1.76, "pecas": 0.78, "impostos": 0.95, "oleo": 0.21, "pneus": 0.22}, "total": 10.65}, "leve": {"preco": 790464, "parcela": 8807, "consumo": 0.4438, "qtd": 75, "custo": {"pessoal": 4.05, "diesel": 2.92, "onibus": 1.79, "pecas": 0.79, "impostos": 0.95, "oleo": 0.21, "pneus": 0.22}, "total": 10.93}, "padron": {"preco": 1055442, "parcela": 11759, "consumo": 0.5398, "qtd": 15, "custo": {"pessoal": 4.05, "diesel": 3.55, "onibus": 2.39, "pecas": 1.06, "impostos": 0.95, "oleo": 0.21, "pneus": 0.22}, "total": 12.43}, "articulado": {"preco": 1946460, "parcela": 21687, "consumo": 0.7796, "qtd": 8, "custo": {"pessoal": 4.05, "diesel": 5.13, "onibus": 4.4, "pecas": 1.95, "impostos": 0.95, "oleo": 0.21, "pneus": 0.37}, "total": 17.06}}, "motoristas": 185.67999999999998, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.6378, "mot_custo": 7495.649361999999, "iss": 0.03, "taxa": 0.09115000000000001, "rps_pct": 0.0, "fu": 2.11, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 207496.66874999998, "verificador": 2192.7875, "uniformes": 8810.933120000002, "apoio": 10000.0, "ambiental": 0.0}, "consumo_media": 0.48069765765765765, "cid": {"nome": "Juiz de Fora", "uf": "MG", "ano": "edital 2025-26", "frota": "nova concessão", "itens": [["Diesel", "0,4438 l/km no básico com ar", "0,4438 l/km", "jf_k"], ["Óleo e Arla 32", "índices em litros, sem o preço do óleo", "o de Foz", null], ["Pneus", "vida de 128.000 km com 3 recapagens", "128.000 km e 3, com o preço de Foz", "jf_i"], ["Peças", "índice 0,000001 (por km, sobre o preço do ônibus; uns 0,56% do preço por mês)", "R$ 0,92 por km (frota de Foz)", "jf_i"], ["Vida útil do ônibus", "10 anos (convencional e padron)", "10 anos", "jf_i"], ["Revenda do ônibus", "35% (convencional e padron)", "35%", "jf_k"], ["Motoristas, encargos, despesas e retorno", "calculados pelos dados reais da empresa; os números não aparecem", "os de Foz", null]], "rot": {}, "docs": [["Edital do Novo Transporte, Anexo I.K (preços de referência do MAC)", "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf"], ["Edital, Anexo I.I (regras do MAC)", "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 11.592747063569908, "conta_fu_foz": 6793349.779251966, "fu_cidade": 2.11}}, "cid_sp": {"km": 586000, "frota": 105, "oper": 88, "rkm": 13.919095991977475, "conta_mes": 8156590.2512988, "conta_ano": 97879083.0155856, "P2": 8.553037216649628, "F": 3144510.4423421184, "P1": 16.414313322504924, "cortes": {"300": 19.034738691123355, "400": 16.414313322504924, "450": 15.540838199632113, "500": 14.842058101333865}, "var": {"diesel": 3.8384196190476203, "oleo": 0.06920173738060961, "pneus": 0.2161893719806763, "pecas": 1.1596783602341674, "hora": 2.187860458641975, "soma": 7.471349547285049}, "itens_mes": {"motoristas": 1865170.2941643198, "diesel": 2249313.8967619054, "pecas": 679571.5190972221, "manutencao": 411117.9621824396, "ir": 0.0, "fiscais": 123082.38467917919, "iss": 342576.79055454955, "oleo": 40552.21810503723, "adm": 0.0, "garagem": 100000.0, "pneus": 126686.97198067632, "outros": 755702.6845666992, "limpeza": 0.0, "seguros": 23201.34552826874, "rps": 616387.8627201684, "capital": 823226.320958335}, "fixos": {"capital": 823226.320958335, "manutencao": 411117.9621824396, "ir": 0.0, "fiscais": 123082.38467917919, "adm": 0.0, "garagem": 100000.0, "outros": 755702.6845666992, "iss_fixo": 132069.43857836892, "mot_fixo": 583084.0654001222, "limpeza": 0.0, "seguros": 23201.34552826874, "rps": 193026.24044870707}, "tipos": {"midi": {"preco": 776500, "parcela": 6147, "consumo": 0.4951, "qtd": 7, "custo": {"pessoal": 5.55, "diesel": 3.26, "onibus": 1.19, "pecas": 0.98, "impostos": 0.62, "oleo": 0.07, "pneus": 0.21, "rps": 1.05}, "total": 12.93}, "leve": {"preco": 790464, "parcela": 6258, "consumo": 0.5387, "qtd": 75, "custo": {"pessoal": 5.55, "diesel": 3.54, "onibus": 1.21, "pecas": 1.0, "impostos": 0.62, "oleo": 0.07, "pneus": 0.21, "rps": 1.05}, "total": 13.25}, "padron": {"preco": 1055442, "parcela": 8356, "consumo": 0.6552, "qtd": 15, "custo": {"pessoal": 5.55, "diesel": 4.31, "onibus": 1.62, "pecas": 1.34, "impostos": 0.62, "oleo": 0.07, "pneus": 0.21, "rps": 1.05}, "total": 14.77}, "articulado": {"preco": 1946460, "parcela": 15409, "consumo": 0.9464, "qtd": 8, "custo": {"pessoal": 5.55, "diesel": 6.23, "onibus": 2.99, "pecas": 2.47, "impostos": 0.62, "oleo": 0.07, "pneus": 0.34, "rps": 1.05}, "total": 19.32}}, "motoristas": 263.12, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.5334, "mot_custo": 7088.667885999999, "iss": 0.041999999999999996, "taxa": 0.0, "rps_pct": 0.09669740408917447, "fu": 2.99, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 693364.35, "verificador": 2192.7875, "uniformes": 11612.80780744, "apoio": 10000.0, "ambiental": 0.0}, "consumo_media": 0.5835238095238097, "cid": {"nome": "São Paulo", "uf": "SP", "ano": "dezembro de 2025", "frota": "13.460 ônibus", "itens": [["Diesel", "com ar: 0,52 (midi), 0,56 (básico), 0,61 (padron) e 0,81 l/km (articulado); trânsito muito lento", "consumo de Foz × 1,277", "sp"], ["Óleo e Arla 32", "óleo R$ 0,0316 por km (R$ 0,0927 no articulado); Arla R$ 1,19 milhão por mês", "1,8% do custo do diesel", "sp"], ["Pneus", "vida de 138.000 km com 3 recapagens por pneu", "138.000 km e 3, com o preço de Foz", "sp"], ["Peças", "de 0,583% a 0,833% do preço do ônibus por mês, conforme a idade", "7% a 10% do preço por ano, conforme a idade", "sp"], ["Motoristas por ônibus", "2,99 (o mesmo número vale para o cobrador, que Foz não tem)", "2,99", "sp"], ["Fiscais por ônibus", "0,2577", "0,2577", "sp"], ["Manutenção por ônibus", "0,564 por ônibus da frota (0,743 no articulado)", "0,69 por ônibus rodando", "sp"], ["Administração e despesas gerais", "R$ 6.603,47 por ônibus por mês (escritório, limpeza, portaria, água, luz, IPTU e outros)", "R$ 6.603,47 por ônibus por mês", "sp"], ["Encargos sobre salário", "53,34% + 1,2% sobre a receita", "53,34% + 1,2%", "sp"], ["Custo ambiental", "não tem", "zero", "sp"], ["Retorno do capital e lucro", "não tem linha de retorno; o lucro bruto da planilha dá 9,67% sobre os custos", "retorno zero + lucro de 9,67%", "sp"], ["Imposto de renda", "sai do lucro bruto (34%)", "fora da conta", "sp"], ["Vida útil e revenda do ônibus", "10 anos e 5%", "10 anos e 5%", "sp"], ["Garagem, validador e guinchos", "aluguel por m² e equipamentos de SP", "os de Foz", null]], "rot": {"manutencao": "Manutenção", "outros": "Validador, administração e despesas gerais (R$ 6.603,47 por ônibus) e outros"}, "docs": [["SPTrans: relatório técnico e planilha tarifária de dezembro/2025 (Quadros 9 a 9.16)", "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 12.846167552114352, "conta_fu_foz": 7527854.18553901, "fu_cidade": 2.99}}, "cid_rio": {"km": 586000, "frota": 105, "oper": 88, "rkm": 12.557243251266456, "conta_mes": 7358544.545242143, "conta_ano": 88302534.54290572, "P2": 7.1922764500870695, "F": 3143870.54549112, "P1": 15.051952813814868, "cortes": {"300": 17.67184493505747, "400": 15.051952813814868, "450": 14.178655440067335, "500": 13.480017541069309}, "var": {"diesel": 3.2062035521235526, "oleo": 0.21428487644787647, "pneus": 0.23595306666666666, "pecas": 0.9979764012135, "hora": 2.310103132716049, "soma": 6.964521029167646}, "itens_mes": {"motoristas": 1757438.5563848845, "diesel": 1878835.2815444018, "pecas": 584814.171111111, "manutencao": 377419.9599986969, "ir": 331422.3836866456, "fiscais": 129661.24360860001, "iss": 233020.57726600117, "oleo": 125570.93759845561, "adm": 0.0, "garagem": 100000.0, "pneus": 138268.49706666666, "outros": 268855.2446549026, "limpeza": 0.0, "seguros": 22706.17850848386, "rps": 0.0, "capital": 1410531.5138132935}, "fixos": {"capital": 1410531.5138132935, "manutencao": 377419.9599986969, "ir": 331422.3836866456, "fiscais": 129661.24360860001, "adm": 0.0, "garagem": 100000.0, "outros": 268855.2446549026, "iss_fixo": 99555.90060721882, "mot_fixo": 403718.12061327975, "limpeza": 0.0, "seguros": 22706.17850848386, "rps": 0.0}, "tipos": {"midi": {"preco": 776500, "parcela": 10196, "consumo": 0.4135, "qtd": 7, "custo": {"pessoal": 4.49, "diesel": 2.72, "onibus": 2.04, "pecas": 0.85, "impostos": 1.0, "oleo": 0.21, "pneus": 0.22}, "total": 11.53}, "leve": {"preco": 790464, "parcela": 10379, "consumo": 0.45, "qtd": 75, "custo": {"pessoal": 4.49, "diesel": 2.96, "onibus": 2.08, "pecas": 0.86, "impostos": 1.0, "oleo": 0.21, "pneus": 0.22}, "total": 11.82}, "padron": {"preco": 1055442, "parcela": 13858, "consumo": 0.5473, "qtd": 15, "custo": {"pessoal": 4.49, "diesel": 3.6, "onibus": 2.78, "pecas": 1.15, "impostos": 1.0, "oleo": 0.21, "pneus": 0.22}, "total": 13.45}, "articulado": {"preco": 1946460, "parcela": 25558, "consumo": 0.7905, "qtd": 8, "custo": {"pessoal": 4.49, "diesel": 5.2, "onibus": 5.12, "pecas": 2.12, "impostos": 1.0, "oleo": 0.21, "pneus": 0.37}, "total": 18.51}}, "motoristas": 234.80306997742662, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.635, "mot_custo": 7484.734149999999, "iss": 0.03166666666666666, "taxa": 0.1015, "rps_pct": 0.0, "fu": 2.668216704288939, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 207496.66874999998, "verificador": 2192.7875, "uniformes": 10633.049145643343, "apoio": 10000.0, "ambiental": 0.0}, "consumo_media": 0.4874131274131275, "cid": {"nome": "Rio de Janeiro", "uf": "RJ", "ano": "licitação 2026", "frota": "443 ônibus rodando (5 lotes)", "itens": [["Diesel", "0,45 l/km no básico com ar (0,38 no midi)", "0,45 l/km", "rio_pre"], ["Óleo e Arla 32", "óleo: 0,0265 × o preço do litro de diesel, por km; Arla: 0,04 litro por litro de diesel", "6,7% do custo do diesel", "rio_pre"], ["Pneus", "vida de 125.000 km; 3 recapagens (básico e padron) e 2 (midi)", "125.000 km e 2,94, com o preço de Foz", "rio_pre"], ["Peças", "6% a 12% do preço do ônibus por ano, conforme a idade (ANTP)", "a mesma tabela da ANTP, por idade", "rio_pre"], ["Motoristas por ônibus", "de 2,50 a 2,80, conforme o lote", "2,67 (média pela frota de cada lote)", "rio_pre"], ["Fiscais e despachantes por ônibus", "0,20 e 0,0565", "0,2565", "rio_pre"], ["Manutenção, administração e diretoria", "20% do pessoal de operação", "20%", "rio_pre"], ["Encargos sobre salário", "53% em 2026, 59% em 2027 e 65% depois; mais 1,2% e 0,8% sobre a receita", "63,5% + 0,17% (média dos 12 anos)", "rio_pre"], ["Despesas gerais", "não tem a linha; tem IPVA (2%), vistoria e IPTU, que são taxas do Rio", "as de Foz (3% ao ano)", "rio_pre"], ["Custo ambiental", "não tem", "zero", "rio_pre"], ["Retorno do capital", "10,15% ao ano", "10,15%", "rio_eer"], ["Imposto de renda", "entra na conta (lucro real)", "entra, como no nosso", "rio_eer"], ["Vida útil e revenda do ônibus", "10 anos e 10%", "10 anos e 10%", "rio_pre"], ["Tarifa por km do próprio Rio (só para comparar)", "R$ 10,40 a R$ 13,02 por km, conforme o lote (mini, midi e básico; garagem pública)", "não entra na conta", "rio_eer"]], "rot": {}, "docs": [["SMTR: premissas do modelo econômico, licitação do Sistema RIO etapa 2 (base maio/2026)", "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo"], ["SMTR: estudo econômico de referência da etapa 2 (retorno e tarifa por km)", "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view"], ["SMTR: página da licitação da etapa 2", "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 11.77068676876247, "conta_fu_foz": 6897622.4464948075, "fu_cidade": 2.668216704288939}}, "cid_cps": {"km": 586000, "frota": 105, "oper": 88, "rkm": 12.233514366057902, "conta_mes": 7168839.41850993, "conta_ano": 86026073.02211916, "P2": 7.337365375869038, "F": 2869143.308250674, "P1": 14.510223646495724, "cortes": {"300": 16.901176403371284, "400": 14.510223646495724, "450": 13.71323939420387, "500": 13.075651992370386}, "var": {"diesel": 3.4207631814671817, "oleo": 0.3249725022393823, "pneus": 0.23867306666666666, "pecas": 0.8201670947098972, "hora": 2.3077769925925926, "soma": 7.11235283767572}, "itens_mes": {"motoristas": 1566351.5730658735, "diesel": 2004567.2243397685, "pecas": 480617.9174999998, "manutencao": 430081.75611896126, "ir": 320338.76489328017, "fiscais": 50497.134148266676, "iss": 219844.40883430452, "oleo": 190433.88631227802, "adm": 0.0, "garagem": 100000.0, "pneus": 139862.41706666665, "outros": 219129.0151778895, "limpeza": 0.0, "seguros": 58099.06724999999, "rps": 0.0, "capital": 1389016.2538026422}, "fixos": {"capital": 1389016.2538026422, "manutencao": 430081.75611896126, "ir": 320338.76489328017, "fiscais": 50497.134148266676, "adm": 0.0, "garagem": 100000.0, "outros": 219129.0151778895, "iss_fixo": 87987.06145302067, "mot_fixo": 213994.25540661416, "limpeza": 0.0, "seguros": 58099.06724999999, "rps": 0.0}, "tipos": {"midi": {"preco": 776500, "parcela": 9778, "consumo": 0.4412, "qtd": 7, "custo": {"pessoal": 4.04, "diesel": 2.9, "onibus": 2.01, "pecas": 0.7, "impostos": 1.02, "oleo": 0.32, "pneus": 0.23}, "total": 11.22}, "leve": {"preco": 790464, "parcela": 9954, "consumo": 0.4801, "qtd": 75, "custo": {"pessoal": 4.04, "diesel": 3.16, "onibus": 2.05, "pecas": 0.71, "impostos": 1.02, "oleo": 0.32, "pneus": 0.23}, "total": 11.53}, "padron": {"preco": 1055442, "parcela": 13290, "consumo": 0.5839, "qtd": 15, "custo": {"pessoal": 4.04, "diesel": 3.84, "onibus": 2.73, "pecas": 0.95, "impostos": 1.02, "oleo": 0.32, "pneus": 0.23}, "total": 13.13}, "articulado": {"preco": 1946460, "parcela": 24510, "consumo": 0.8434, "qtd": 8, "custo": {"pessoal": 4.04, "diesel": 5.55, "onibus": 5.04, "pecas": 1.74, "impostos": 1.02, "oleo": 0.32, "pneus": 0.38}, "total": 18.09}}, "motoristas": 209.4837781512605, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.6330666666666667, "mot_custo": 7477.197456, "iss": 0.030666666666666665, "taxa": 0.0926, "rps_pct": 0.0, "fu": 2.3804974789915967, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 124498.00124999999, "verificador": 2192.7875, "uniformes": 9322.709043630253, "apoio": 10000.0, "ambiental": 34582.778125000004}, "consumo_media": 0.520030888030888, "cid": {"nome": "Campinas", "uf": "SP", "ano": "licitação 2026", "frota": "714 ônibus no pico (2 lotes)", "itens": [["Diesel", "com ar: 0,47 (básico), 0,63 (padron) e 0,86 l/km (articulado)", "consumo de Foz × 1,138", "cps_drv"], ["Óleo e Arla 32", "6,5% e 3% do custo do diesel", "9,5% do custo do diesel", "cps_drv"], ["Pneus", "vida de 125.000 km com 3 recapagens", "125.000 km e 3, com o preço de Foz", "cps_drv"], ["Peças", "6% do preço do ônibus novo por ano", "6% ao ano", "cps_drv"], ["Motoristas por ônibus", "2,36 (Norte) e 2,41 (Sul), jornada de 7h20", "2,38 (média pela frota de pico)", "cps_drv"], ["Fiscais por ônibus", "0,10", "0,10", "cps_drv"], ["Manutenção, administração e diretoria", "26,6% do custo de motoristas e fiscais", "26,6%", "cps_drv"], ["Encargos sobre salário", "58,1% no 1º ano e 63,78% depois; 0,8% sobre a receita no 1º ano", "63,3% + 0,07% (média dos 12 anos)", "cps_drv"], ["Despesas gerais", "1,8% ao ano do preço do básico, por ônibus", "1,8% ao ano", "cps_drv"], ["Custo ambiental", "0,5% ao ano do preço do básico, por ônibus", "R$ 329 por ônibus por mês", "cps_drv"], ["Seguro e licenciamento", "0,84% ao ano do preço do básico, por ônibus", "R$ 553 por ônibus por mês", "cps_drv"], ["Idade dos ônibus", "básico e padron: no máximo 10 anos, com média de no máximo 5", "10 anos; média de 5", "cps_drv"], ["Retorno do capital", "9,26% ao ano (WACC), em 15 anos", "9,26%", "cps_drv"], ["Imposto de renda", "entra na conta (lucro real, 34%)", "entra, como no nosso", "cps_drv"], ["Frota de apoio, tecnologia (ITS), garagem e verificador", "1,5% dos custos; 21% do investimento em ITS; aluguel de R$ 10,66 por m²", "os de Foz", null], ["Tarifa por km do próprio sistema (só para comparar)", "lote Sul: R$ 8,97 (básico) a R$ 16,21 (articulado), mais 10% pago por passageiro", "não entra na conta", "cps_drv"]], "rot": {}, "docs": [["Emdec: edital da concessão (out/2026), pasta dos anexos; Anexo II, Apêndice 02.1 (premissas técnicas)", "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN"], ["Anexo II, Apêndice 02.2 (motoristas por ônibus e encargos) e Apêndice 07a (modelo econômico, lote Sul)", "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN"], ["Prefeitura de Campinas: página da Concorrência 15/2025 (republicada em 2026)", "https://campinas.sp.gov.br/licitacoes/edital/12006"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 11.832790191420072, "conta_fu_foz": 6934015.052172162, "fu_cidade": 2.3804974789915967}}, "cid_rb": {"km": 586000, "frota": 105, "oper": 88, "rkm": 13.082049001418593, "conta_mes": 7666080.714831295, "conta_ano": 91992968.57797554, "P2": 7.577709809623674, "F": 3225542.766391822, "P1": 15.64156672560323, "cortes": {"300": 18.32951903092975, "400": 15.64156672560323, "450": 14.745582623827723, "500": 14.028795342407319}, "var": {"diesel": 3.3301767561389957, "oleo": 0.215830301003861, "pneus": 0.25861532879818594, "pecas": 0.9340791911973831, "hora": 2.040351090123457, "soma": 6.779052667261883}, "itens_mes": {"motoristas": 1419457.56287104, "diesel": 1951483.5790974514, "pecas": 547370.4060416665, "manutencao": 505736.9500711532, "ir": 0.0, "fiscais": 53276.71223424, "iss": 306643.22859325184, "oleo": 126476.55638826254, "adm": 0.0, "garagem": 100000.0, "pneus": 151548.58267573695, "outros": 506242.27638665284, "limpeza": 0.0, "seguros": 20389.425000000003, "rps": 393422.88791100954, "capital": 1584032.5475608306}, "fixos": {"capital": 1584032.5475608306, "manutencao": 505736.9500711532, "ir": 0.0, "fiscais": 53276.71223424, "adm": 0.0, "garagem": 100000.0, "outros": 506242.27638665284, "iss_fixo": 129021.71065567291, "mot_fixo": 223811.8240586943, "limpeza": 0.0, "seguros": 20389.425000000003, "rps": 103031.3204245792}, "tipos": {"midi": {"preco": 776500, "parcela": 11517, "consumo": 0.4295, "qtd": 7, "custo": {"pessoal": 4.41, "diesel": 2.83, "onibus": 2.29, "pecas": 0.79, "impostos": 0.56, "oleo": 0.22, "pneus": 0.25, "rps": 0.67}, "total": 12.02}, "leve": {"preco": 790464, "parcela": 11724, "consumo": 0.4674, "qtd": 75, "custo": {"pessoal": 4.41, "diesel": 3.07, "onibus": 2.33, "pecas": 0.81, "impostos": 0.56, "oleo": 0.22, "pneus": 0.25, "rps": 0.67}, "total": 12.32}, "padron": {"preco": 1055442, "parcela": 15654, "consumo": 0.5685, "qtd": 15, "custo": {"pessoal": 4.41, "diesel": 3.74, "onibus": 3.12, "pecas": 1.08, "impostos": 0.56, "oleo": 0.22, "pneus": 0.25, "rps": 0.67}, "total": 14.05}, "articulado": {"preco": 1946460, "parcela": 28870, "consumo": 0.8211, "qtd": 8, "custo": {"pessoal": 4.41, "diesel": 5.4, "onibus": 5.75, "pecas": 1.99, "impostos": 0.56, "oleo": 0.22, "pneus": 0.41, "rps": 0.67}, "total": 19.41}}, "motoristas": 214.72, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.4108, "mot_custo": 6610.737532, "iss": 0.04, "taxa": 0.099, "rps_pct": 0.0731, "fu": 2.44, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 359502.5819148936, "verificador": 2192.7875, "uniformes": 9557.2224, "apoio": 10000.0, "ambiental": 86456.94531250001}, "consumo_media": 0.5062597683397683, "cid": {"nome": "Rio Branco", "uf": "AC", "ano": "licitação 2026", "frota": "94 ônibus", "itens": [["Diesel", "0,41 l/km no básico sem ar (a frota de lá não tem ar)", "0,41 + 14% do ar = 0,467 l/km", "rb_pla"], ["Óleo e Arla 32", "óleo: 0,0265 × o preço do litro de diesel, por km; Arla: 0,04 litro por litro de diesel", "6,5% do custo do diesel", "rb_pla"], ["Pneus", "vida de 105.000 km com 2,5 recapagens", "105.000 km e 2,5, com o preço de Foz", "rb_pla"], ["Peças", "6% a 12% do preço do ônibus por ano, conforme a idade (ANTP)", "a mesma tabela da ANTP, por idade", "rb_pla"], ["Motoristas por ônibus", "2,44", "2,44", "rb_pla"], ["Fiscais por ônibus", "0,12", "0,12", "rb_pla"], ["Manutenção, administração e diretoria", "34,34% do pessoal de operação", "34,34%", "rb_pla"], ["Encargos sobre salário", "41,08% + 1% sobre a receita (INSS)", "41,08% + 1%", "rb_pla"], ["Despesas gerais", "R$ 3,86 milhões por ano para 94 ônibus", "R$ 3.424 por ônibus por mês", "rb_pla"], ["Custo ambiental", "1,25% ao ano do preço do básico, por ônibus", "R$ 823 por ônibus por mês", "rb_pla"], ["Seguros e licenciamento", "R$ 203.980 por ano (responsabilidade civil) + R$ 160,22 por ônibus", "R$ 194 por ônibus por mês", "rb_pla"], ["Retorno do capital", "9,90% ao ano", "9,90%", "rb_pla"], ["Lucro sobre os custos (RPS)", "7,31%", "7,31%", "rb_pla"], ["Imposto de renda", "não é linha da planilha", "fora da conta", "rb_pla"], ["Vida útil e revenda do ônibus", "8 anos e 10% (padrão da ANTP para o básico)", "8 anos e 10%", "rb_pla"], ["ISS e outros tributos", "ISS de 4% e mais 3% de outros tributos", "fica o ISS de 3% de Foz", "rb_pla"], ["Tarifa por km do próprio sistema (só para comparar)", "R$ 6,85 milhões por mês para uns 701 mil km: R$ 9,78 por km", "não entra na conta", "rb_pla"]], "rot": {}, "docs": [["RBTrans: Concorrência 005/2026, planilha ANTP do edital (anexo)", "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview"], ["Pasta oficial da Concorrência 005/2026 (edital, avisos e suspensão)", "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 12.586816921059805, "conta_fu_foz": 7375874.715741046, "fu_cidade": 2.44}}, "cid_rmc": {"km": 586000, "frota": 105, "oper": 88, "rkm": 11.023729849114574, "conta_mes": 6459905.69158114, "conta_ano": 77518868.29897368, "P2": 6.844697597238118, "F": 2448912.8995996034, "P1": 12.966979846237127, "cortes": {"300": 15.007740595903464, "400": 12.966979846237127, "450": 12.286726263015014, "500": 11.742523396437324}, "var": {"diesel": 3.0281102552380954, "oleo": 0.1937990563352381, "pneus": 0.3093102342511241, "pecas": 0.8870574659863868, "hora": 2.138943286343272, "soma": 6.5572202981541166}, "itens_mes": {"motoristas": 1271748.391952203, "diesel": 1774472.609569524, "pecas": 519815.6750680227, "manutencao": 276371.2930833247, "ir": 0.0, "fiscais": 62832.23825320949, "iss": 271316.03904640785, "oleo": 113566.24701244953, "adm": 378859.19585325127, "garagem": 100000.0, "pneus": 181255.79727115872, "outros": 266446.4485738801, "limpeza": 34112.45319455836, "seguros": 20252.137500000004, "rps": 0.0, "capital": 1188857.1652031504}, "fixos": {"capital": 1188857.1652031504, "manutencao": 276371.2930833247, "ir": 0.0, "fiscais": 62832.23825320949, "adm": 378859.19585325127, "garagem": 100000.0, "outros": 266446.4485738801, "iss_fixo": 102854.3417831833, "mot_fixo": 18327.626155045582, "limpeza": 34112.45319455836, "seguros": 20252.137500000004, "rps": 0.0}, "tipos": {"midi": {"preco": 776500, "parcela": 8556, "consumo": 0.3905, "qtd": 7, "custo": {"pessoal": 4.08, "diesel": 2.57, "onibus": 1.72, "pecas": 0.75, "impostos": 0.5, "oleo": 0.19, "pneus": 0.29}, "total": 10.1}, "leve": {"preco": 790464, "parcela": 8709, "consumo": 0.425, "qtd": 75, "custo": {"pessoal": 4.08, "diesel": 2.8, "onibus": 1.75, "pecas": 0.77, "impostos": 0.5, "oleo": 0.19, "pneus": 0.29}, "total": 10.38}, "padron": {"preco": 1055442, "parcela": 11629, "consumo": 0.5169, "qtd": 15, "custo": {"pessoal": 4.08, "diesel": 3.4, "onibus": 2.34, "pecas": 1.02, "impostos": 0.5, "oleo": 0.19, "pneus": 0.29}, "total": 11.82}, "articulado": {"preco": 1946460, "parcela": 21446, "consumo": 0.7466, "qtd": 8, "custo": {"pessoal": 4.08, "diesel": 4.91, "onibus": 4.31, "pecas": 1.89, "impostos": 0.5, "oleo": 0.19, "pneus": 0.49}, "total": 16.37}}, "motoristas": 183.50880937042456, "diesel": 6.578, "sal": 3898.29, "ben": 1111.03, "enc": 0.49274329199525996, "mot_custo": 6930.176247752202, "iss": 0.041999999999999996, "taxa": 0.0864, "rps_pct": 0.0, "fu": 2.08532737920937, "outros_det": {"bilhetagem": 38532.73925925926, "gerais": 138331.11250000002, "verificador": 2192.7875, "uniformes": 8224.25306462079, "apoio": 10000.0, "ambiental": 69165.55625000001}, "consumo_media": 0.4603390476190476, "cid": {"nome": "Grande Curitiba", "uf": "PR", "ano": "licitação 2026", "frota": "746 ônibus (4 lotes)", "itens": [["Diesel", "com ar: 0,398 (micro), 0,4255 (comum), 0,5175 (padron) e 0,7345 l/km (articulado)", "consumo de Foz × 1,008", "rmc_ap1"], ["Óleo e Arla 32", "4% e 2,4% do custo do diesel", "6,4% do custo do diesel", "rmc_ap1"], ["Pneus", "85.000 km por pneu (109.529 no articulado), com 2,48 recapagens", "R$ 0,3093 por km, com o preço de Foz", "rmc_ap1"], ["Peças", "8% ao ano do preço do ônibus sem pneus, só nos ônibus que rodam", "6,5% do preço por ano, na frota toda", "rmc_ap1"], ["Motoristas por ônibus", "1.424 motoristas para 683 ônibus rodando no pico (lotes com 1,99 a 2,18)", "2,09", "rmc_ap1"], ["Fiscais e equipe de tráfego", "23 pessoas por lote (fiscais, auxiliares, supervisores e encarregados)", "0,135 por ônibus rodando", "rmc_ap1"], ["Manutenção", "81 pessoas por lote (mecânicos, eletricistas, borracheiros, almoxarifado)", "0,474 por ônibus rodando", "rmc_ap1"], ["Lavadores e faxineiros", "16 pessoas por lote", "0,094 por ônibus rodando", "rmc_ap1"], ["Administração e diretoria", "67 pessoas por lote, com presidente e 2 diretores, mais menores aprendizes (5%)", "23,0% do pessoal de operação", "rmc_ap1"], ["Encargos sobre salário", "49,3% (INSS de 10% em 2026) + 1,2% sobre a receita", "49,3% + 1,2%", "rmc_ap1"], ["Despesas gerais", "2% ao ano do preço do ônibus comum, por ônibus", "2% ao ano do preço do básico de Foz", "rmc_ap1"], ["Custo ambiental", "1% ao ano do preço do ônibus comum, por ônibus", "R$ 659 por ônibus por mês", "rmc_ap1"], ["Seguro", "R$ 2.314,53 por ônibus por ano", "R$ 2.314,53", "rmc_ap1"], ["Retorno do capital", "8,64% ao ano (WACC); vida de 12 anos e revenda de 10% do preço sem pneus", "8,64%; 12 anos; 9,7%", "rmc_ap1"], ["Imposto de renda", "não é linha da planilha", "fora da conta", "rmc_ap2"], ["Tecnologia (ITS, 3% dos custos)", "bilhetagem, GPS e câmeras da concessionária", "fora: fica o custo do validador do edital de Foz", "rmc_ap1"], ["Pedágio, estações-tubo, terminais e taxa da AGEPAR", "coisas da região metropolitana", "fora", "rmc_ap1"], ["PIS/Cofins de 0,365% (LC 224/2025)", "tem", "fora, como no nosso", "rmc_ap2"], ["Tarifa por km do próprio sistema (só para comparar)", "R$ 11,32 a R$ 14,09 por km, conforme o lote", "não entra na conta", "rmc_ap1"]], "rot": {"manutencao": "Manutenção (mecânicos, borracheiros, almoxarifado)", "limpeza": "Lavadores e faxineiros", "fiscais": "Fiscais e equipe de tráfego"}, "docs": [["AMEP: Concorrência 06/2026, Anexo V, Apêndice I: planilhas do cálculo tarifário (lotes 1 a 4; aqui, o lote 4)", "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx"], ["AMEP: Apêndice II, estudo de viabilidade do lote 4 (R$ 11,33 por km, retorno de 8,64%)", "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"], ["AMEP: página da Concorrência 06/2026", "https://www.amep.pr.gov.br/concorrencia2026"]], "urls": {"bh": "https://prefeitura.pbh.gov.br/sites/default/files/estrutura-de-governo/sumob/2026/it_sumob_005_2025.pdf", "poa_par": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/SEI_25.16.000045783_0_parecer_tecnico.pdf", "poa_pla": "https://prefeitura.poa.br/sites/default/files/usu_doc/servicos/eptc/Transporte/2026_tarifa_tecnica.pdf", "cwb_res": "https://www.urbs.curitiba.pr.gov.br/portal/wp-content/uploads/2026/07/RESOLUCAO-DIR-021-2026-tarifa-tecnica-junho-2026.pdf", "cwb_pes": "https://www.urbs.curitiba.pr.gov.br/pdf/institucional/transparencia/definicao-custo-km/01_JANEIRO_2026.pdf", "cwb_nc": "https://www.urbs.curitiba.pr.gov.br/PORTAL/licitacoes/documentos/6%20PLANILHAS%20ECON%D4MICO-FINANCEIRAS.zip", "lon1": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/1._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_1_2026.pdf", "lon2": "https://cmtu.londrina.pr.gov.br/images/conteudo/2026/2._Planilha_de_C%C3%A1lculo_Tarif%C3%A1rio_-_%C3%81rea_2_2026.pdf", "mao": "https://www.manaus.am.gov.br/immu/wp-content/uploads/sites/14/2026/03/Metodologia-de-calculo-da-remuneracao-junho2025.pdf", "jf_k": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo1.k-metodologia-de-calculo.pdf", "jf_i": "https://pjf.mg.gov.br/novotransporte/arquivos/anexo-1.i-regras-para-utilizacao.pdf", "sp": "https://prefeitura.sp.gov.br/documents/d/mobilidade/relatorio-com-planilha-pdf", "rio_pag": "https://transportes.prefeitura.rio/licitacao-do-sistema-rio-etapa-2/", "rio_pre": "https://drive.google.com/drive/folders/1cOt45plsxztaNtC5r-ahwjCLfvX2nAjo", "rio_eer": "https://drive.google.com/file/d/1GAeDzSBWNA7mf2MzGT50BfqEIRHluv78/view", "cps_drv": "https://drive.campinas.sp.gov.br/index.php/s/aerQQf9c3Z8ZxoN", "cps_pag": "https://campinas.sp.gov.br/licitacoes/edital/12006", "rb_pla": "https://docs.google.com/spreadsheets/d/1TwHw8M1xc0r6TVlQnOrIXl9G6t1QqpHH/htmlview", "rb_pas": "https://drive.google.com/drive/folders/10eJfCxMf6H9y8q5SKCzxWL8ZcopmfXty", "rmc_pag": "https://www.amep.pr.gov.br/concorrencia2026", "rmc_ap1": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.1.apendiceicalculotarifariolote4.xlsx", "rmc_ap2": "https://www.amep.pr.gov.br/sites/comec/files/documento/2026-07/05.2.apendiceiiestudodeviabilidadeeconomicofinanceiralote4.pdf"}, "rkm_fu_foz": 11.05691272287801, "conta_fu_foz": 6479350.855606514, "fu_cidade": 2.08532737920937}}};
 
 /* ================= dados do modelo do zero (opção A, 586 mil km/mês) ================= */
 const MOD = {
@@ -986,6 +1130,8 @@ function trocarModelo(id){
   montarPontos();
   document.querySelectorAll('.mb').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
   document.getElementById('contaVal').textContent = brl(MOD[id].total);
+  document.getElementById('contaRot').textContent = 'valor médio do km do ' + MOD[id].nome.toLowerCase();
+  marcaGrupos();
   enquadrar(vistaAtual, false);
   if (!jan.hidden) abrir(janelaAtual || 'onibus');
   if (!detEl.hidden && detAtual) abrirDetalhe(detAtual);
@@ -1044,7 +1190,7 @@ function posicionarPontos(){
 const jan = document.getElementById('jan');
 let janelaAtual = null;
 function conteudo(k){
-  if (cenAtual !== 'nosso'){ const r = conteudoFep(k); if (r) return r; }
+  if (cenAtual !== 'nosso'){ const r = ehCid(cenAtual) ? conteudoCid(k) : conteudoFep(k); if (r) return r; }
   const M = MOD[atual], C = M.custo;
   const pneuKm = C.pneus;
   switch (k){
@@ -1065,11 +1211,11 @@ function conteudo(k){
       'Cada pneu roda uns 141 mil km, com 1,4 recapagem'],
       f:'Fonte: compras de prefeituras do Paraná em 2026 (PNCP); vida do pneu de Jacareí (2026).'};
     case 'pecas': return {t:'Motor e peças', g:`${brl(C.pecas)} <small>por km</small>`, l:[
-      'Peças custam de 6% a 12% do valor do ônibus por ano',
-      'Quanto mais velho, mais gasta: até 2 anos 6%, de 9 a 10 anos 10%, mais de 10 anos 12%',
-      `Neste ônibus novo: uns ${brl0(M.preco*0.06)} de peças por ano`,
+      'Peças: média do que gastam as 11 cidades da aba "Outras cidades", com o preço e a frota de Foz',
+      `Na frota toda: ${brl(NUM.pecas_media)} por km (a tabela da ANTP dava ${brl(NUM.pecas_antp)})`,
+      `Neste ônibus: uns ${brl0(C.pecas*586000*12/105)} de peças por ano`,
       `Óleo e Arla 32: mais ${brl(C.oleo)} por km`],
-      f:'Fonte: tabela de peças por idade da ANTP.'};
+      f:'Fonte: planilhas oficiais de 11 cidades (2025–2026). Até 23/11 usávamos a tabela da ANTP por idade.'};
     case 'ar': return {t:'Ar-condicionado', g:'Todos com ar', l:[
       'O preço usado já é o de ônibus com ar e motor Euro 6',
       'O ar gasta uns 14% a mais de diesel; isso já está na conta',
@@ -1085,7 +1231,7 @@ function conteudo(k){
     case 'bilhetagem': return {t:'Validador e despesas da empresa', g:`${brl(Object.values(NUM.outros_det).reduce((a, b) => a + b, 0)/NUM.km)} <small>por km</small>`, l:[
       `Validador do cartão, câmeras e GPS: ${brl0(NUM.outros_det.bilhetagem)} por mês`,
       `Despesas gerais da empresa (água, luz, contabilidade, informática): ${brl0(NUM.outros_det.gerais)} por mês`,
-      'As despesas gerais seguem a faixa da ANTP: 3% ao ano do preço do ônibus'],
+      'As despesas gerais seguem a faixa da ANTP: 3% ao ano do preço do ônibus. Elas também cobrem as obrigações ambientais da empresa (fumaça preta, licenças, óleo usado e resíduos)'],
       f:'Fonte: edital de Foz; manuais da ANTP, Niterói e Curitiba.'};
     case 'onibus': return {t:'Este ônibus', g:brl0(M.preco), l:[
       `Parcela de ${brl0(M.parcela)} por mês em 12 anos, já com o retorno de 9,12% ao ano`,
@@ -1102,8 +1248,8 @@ function abrir(k){
   jan.innerHTML = `<div class="topo"><span class="ic">${IC[k]}</span><div><h2>${c.t}</h2><div class="sub">${M.nome}${seloCen()}</div></div>
     <button class="x" aria-label="Fechar">${IC.fechar}</button></div>
     <div class="grande">${c.g}</div><ul>${c.l.map(x => `<li>${x}</li>`).join('')}</ul>
-    ${c.f ? (c.fp ? `<div class="fpf${cenAtual === 'fepaj' ? ' aj' : ''}">${c.f}</div>` : `<div class="fonte">${c.f}</div>`) : ''}
-    <div class="acoes">${k === 'letreiro' || k === 'portas' ? '' : `<button class="pri" data-a="det">${cenAtual === 'nosso' ? 'Como chegamos a esse valor' : 'De onde a FEPESE tirou'}</button>`}${k === 'letreiro' ? '<button data-a="linha">Trocar a linha</button>' : ''}${k === 'portas' ? '<button data-a="portas">Abrir ou fechar</button>' : ''}</div>`;
+    ${c.f ? (c.fp ? `<div class="fpf${cenAtual === 'fepaj' ? ' aj' : ''}${ehCid(cenAtual) ? ' cd' : ''}">${c.f}</div>` : `<div class="fonte">${c.f}</div>`) : ''}
+    <div class="acoes">${k === 'letreiro' || k === 'portas' ? '' : `<button class="pri" data-a="det">${cenAtual === 'nosso' ? 'Como chegamos a esse valor' : ehCid(cenAtual) ? 'O que veio ' + deCid(cenAtual) : 'De onde a FEPESE tirou'}</button>`}${k === 'letreiro' ? '<button data-a="linha">Trocar a linha</button>' : ''}${k === 'portas' ? '<button data-a="portas">Abrir ou fechar</button>' : ''}</div>`;
   jan.hidden = false;
 }
 function abrirConta(){
@@ -1115,8 +1261,8 @@ function abrirConta(){
     <div class="grande">${brl(M.total)} <small>por km</small></div>
     <div class="barra" role="img" aria-label="Partes do custo por km">${seg}</div>
     <ul class="leg">${li}<li class="tot"><i></i><span>Total</span><b>${brl(M.total)}</b><em>100%</em></li></ul>
-    <div class="fonte">Média dos ${NUM.frota} ônibus: ${brl(NUM.rkm)} por km. A 586 mil km por mês, a conta do sistema dá ${brl(NUM.conta_mes/1e6)} milhões por mês. ${cenAtual === 'nosso' ? `Modelo do zero, contrato de 12 anos, dados conferidos em ${NUM.data}.` : cenAtual === 'fep' ? 'Planilha da FEPESE (Anexo VIII) como está no papel, só trocando os km para 586 mil.' : 'Planilha da FEPESE com os dados que faltaram ou ficaram velhos, mantendo 120 ônibus, 3,834 motoristas por ônibus e o lucro a mais.'}</div>
-    <div class="acoes"><button class="pri" data-a="geral">Como chegamos a esse valor</button><button data-a="conf">${cenAtual === 'nosso' ? 'Dados conferidos' : 'Fontes da FEPESE'}</button></div>`;
+    <div class="fonte">Média dos ${NUM.frota} ônibus: ${brl(NUM.rkm)} por km. A 586 mil km por mês, a conta do sistema dá ${brl(NUM.conta_mes/1e6)} milhões por mês. ${cenAtual === 'nosso' ? `Modelo do zero, contrato de 12 anos, dados conferidos em ${NUM.data}.` : ehCid(cenAtual) ? `Modelo de Foz com os coeficientes da planilha oficial de ${CEN_NOME[cenAtual]} (${CID[cenAtual].cid.ano}); preços, frota e km de Foz.` : cenAtual === 'fep' ? 'Planilha da FEPESE (Anexo VIII) como está no papel, só trocando os km para 586 mil.' : 'Planilha da FEPESE com os dados que faltaram ou ficaram velhos, mantendo 120 ônibus, 3,834 motoristas por ônibus e o lucro a mais.'}</div>
+    <div class="acoes"><button class="pri" data-a="geral">Como chegamos a esse valor</button><button data-a="conf">${cenAtual === 'nosso' ? 'Dados conferidos' : ehCid(cenAtual) ? 'Todas as cidades' : 'Fontes da FEPESE'}</button></div>`;
   jan.hidden = false; janelaAtual = 'conta';
 }
 function abrirCorte(){
@@ -1130,10 +1276,10 @@ function abrirCorte(){
       <li>Acima de 400 mil km: <b>${brl(NUM.P2)}</b> por km, só o que aumenta com o km rodado</li>
       <li>Rodando 586 mil km, a conta dá ${brl(NUM.conta_mes/1e6)} milhões por mês, com qualquer corte</li>
       <li>Se o sistema rodar menos que o corte, a empresa não cobre os custos fixos</li>
-      ${cenAtual === 'nosso' ? '' : '<li><b>A FEPESE não usa faixa de corte</b>: paga um valor só por km. Aqui está como ficaria em 2 faixas, com os números dela</li>'}
+      ${cenAtual === 'nosso' || ehCid(cenAtual) ? '' : '<li><b>A FEPESE não usa faixa de corte</b>: paga um valor só por km. Aqui está como ficaria em 2 faixas, com os números dela</li>'}
     </ul>
     <ul class="leg" style="margin-top:6px"><li style="font-size:11px;color:#6c7a82"><i></i><span>Outros cortes</span><b>até o corte</b><em>acima</em></li>${li}</ul>
-    <div class="fonte">${cenAtual === 'nosso' ? 'Modelo do zero, média dos 105 ônibus, contrato de 12 anos.' : `Planilha da FEPESE${cenAtual === 'fepaj' ? ' ajustada' : ''}, média dos 120 ônibus, contrato de 20 anos.`}</div>`;
+    <div class="fonte">${cenAtual === 'nosso' ? 'Modelo do zero, média dos 105 ônibus, contrato de 12 anos.' : ehCid(cenAtual) ? `Modelo de Foz com os coeficientes de ${CEN_NOME[cenAtual]}, média dos 105 ônibus, contrato de 12 anos.` : `Planilha da FEPESE${cenAtual === 'fepaj' ? ' ajustada' : ''}, média dos 120 ônibus, contrato de 20 anos.`}</div>`;
   jan.hidden = false; janelaAtual = 'corte';
 }
 document.getElementById('btnCorte').addEventListener('click', () => abrirDetalhe('geral'));
@@ -1187,7 +1333,7 @@ const FONTES = {
   fozEdital: ['Edital de Foz em preparação (FEPESE), Anexo VIII – parâmetros do fluxo de caixa', ''],
   fozP2: ['FEPESE, Produto 2 do estudo de Foz (contrato atual)', ''],
   fozP3: ['FEPESE, Produto 3 do estudo de Foz, Tabela 12 (preços de rodagem)', ''],
-  planilha: ['Planilha do modelo do zero (abas Premissas, Resultado e Fluxo de caixa)', 'https://claude.ai/artifact/TYEGdD5RQkpfoCqWUyPswu'],
+  planilha: ['Planilha do modelo do zero (abas Premissas, Resultado e Fluxo de caixa)', ''],
   pncpSalvador: ['PNCP: Salvador-BA, Pregão 01/2026, 50 ônibus básicos Euro VI com ar', PN + '13927801000149/2026/93'],
   pncpAracaju: ['PNCP: Aracaju-SE, Pregão 56/2026, 36 ônibus básicos com câmbio automático', PN + '13128780004431/2026/71'],
   pncpRioPadron: ['PNCP: Rio de Janeiro, 2025, 100 ônibus padron do BRT', PN + '42498733000148/2025/744'],
@@ -1226,6 +1372,16 @@ const FONTES = {
   tnhGreve: ['TNH1 (28/04/2026): greve em Foz; a Visac propôs reajuste de 5%', 'https://www.tnh1.com.br/tnh1-variedades/motoristas-entram-em-greve-e-onibus-param-de-rodar-no-brasil/'],
   dt2025: ['Diário do Transporte (12/04/2025): acordo em Foz com reajuste de 6% nos pisos e na cesta básica', 'https://diariodotransporte.com.br/2025/04/12/rodoviarios-de-foz-do-iguacu-pr-suspendem-greve-prevista-apos-acordo-com-empresa-e-prefeitura/amp/'],
   issFoz: ['Buscador NCM: alíquotas do ISS de Foz do Iguaçu no cadastro nacional da NFS-e (item 16.01 a 5%)', 'https://buscadorncm.com.br/iss/pr/foz-do-iguacu'],
+  lc392: ['Foz do Iguaçu, Lei Complementar 392/2022 (muda o Código Tributário, LC 82/2003): ISS de 3% para transporte coletivo de concessionária (§ 6º)', 'https://sapl.fozdoiguacu.pr.leg.br/media/sapl/public/normajuridica/2022/1419/392.pdf'],
+  garagemMapa: ['Google Maps, imagem de satélite: garagem da Viação Santa Clara, Av. Tancredo Neves, 3375, Porto Belo', 'https://www.google.com/maps/@-25.4781,-54.5856,330m/data=!3m1!1e3'],
+  aluguelGalpoes: ['Deztop (anúncios da MGF Imóveis): galpões e barracões para alugar em Foz do Iguaçu', 'https://deztop.com/br/imoveis/pr/foz-do-iguacu/aluguel/galpao-deposito'],
+  aluguelBuskaza: ['Buskaza: depósitos e galpões para alugar em Foz do Iguaçu', 'https://www.buskaza.com.br/aluguel/pr/foz-do-iguacu/deposito-galpao-industria'],
+  aluguelTerrenos: ['OLX: terrenos para alugar em Foz do Iguaçu (8.713 m² por R$ 8.200 no Parque Presidente II)', 'https://www.olx.com.br/imoveis/terrenos/lotes/aluguel/estado-pr/regiao-de-foz-do-iguacu-e-cascavel/regiao-de-foz-do-iguacu/foz-do-iguacu'],
+  aluguelImovelweb: ['Imovelweb: terrenos para alugar em Foz do Iguaçu (1.980 m² na BR-277 por R$ 10.000)', 'https://www.imovelweb.com.br/terrenos-aluguel-foz-do-iguacu-pr.html'],
+  vendaAreas: ['Chaves na Mão: terrenos comerciais em Foz (10.300 m² por R$ 3,6 mi; 6.000 m² na BR-277 por R$ 2,5 mi)', 'https://www.chavesnamao.com.br/terreno-comercial/pr-foz-do-iguacu/'],
+  reoneracao: ['Câmara dos Deputados: Lei 14.973/2024, volta gradual do INSS sobre a folha (20% a partir de 2028)', 'https://www.camara.leg.br/noticias/1097176-SANCIONADA-LEI-QUE-MANTEM-DESONERACAO-DA-FOLHA-EM-2024'],
+  pgWacc: ['Ponta Grossa, estudo de viabilidade do Lote 1 (2024): WACC de 9,41% ao ano, real', 'https://transportes.pontagrossa.pr.gov.br/wp-content/uploads/27.a.-DOCUMENTO-COMPLEMENTAR-ESTUDO-DE-VIABILIDADE-ECONOMICO-FINANCEIRA-LOTE-1-1.pdf'],
+  actFoz: ['Acordo coletivo 2026/27, Sitrofi e Viação Santa Clara (assinado em 29/04/2026), cláusulas 3ª a 7ª', ''],
   fozContrato: ['Minuta do contrato de Foz (FEPESE), cláusula 41: não há bens reversíveis nem indenização', ''],
   tcePR: ['JML (03/08/2026): TCE-PR, Acórdão 1055/26, recomendações para o edital de Cascavel', 'https://jmlgrupo.com.br/conteudo/tce-pr-recomenda-ajustes-em-edital-do-transporte-coletivo-de-cascavel/'],
   tcePR24: ['JML (10/12/2024): TCE-PR suspende a licitação de Cascavel (receitas com venda de usados superestimadas)', 'https://jmlgrupo.com.br/conteudo/tcepr-suspende-licitacao-de-transporte-coletivo-em-cascavel/'],
@@ -1661,44 +1817,39 @@ function detMotorista(M){
 }
 
 function detPecas(M){
-  const pct = 0.0794, ano = M.preco*pct, km = ano/KM_ONIBUS_ANO;
+  const PC = NUM.pecas_cid, med = NUM.pecas_media, ant = NUM.pecas_antp, PE = NUM.pecas_cen;
+  const ef = v => `${rs(v)} (${v >= NUM.rkm ? '+' : '−'}${f2(Math.abs(v - NUM.rkm))})`;
   return {t:'Motor e peças', g:`${rs(M.custo.pecas)} <small>por km no ${M.nome.toLowerCase()}</small>`, html:
-    sec('A conta', `<div class="fm">Peças por km = valor do ônibus novo × % de peças por ano (conforme a idade) ÷ km que cada ônibus roda por ano</div><p>É a tabela de peças por idade da ANTP: quanto mais velho o ônibus, mais peças ele gasta.</p>`) +
-    sec('Tabela da ANTP: peças por ano, em % do valor do ônibus', tab(['Idade do ônibus', '% por ano'], [
-      ['0 a 2 anos', '6%'], ['3 a 4 anos', '7%'], ['5 a 6 anos', '8%'], ['7 a 8 anos', '9%'], ['9 a 10 anos', '10%'], ['mais de 10 anos', '12%']
+    sec('A conta', `<div class="fm">Peças por km = média simples do que as 11 cidades da aba "Outras cidades" gastam de peças, cada uma com a regra dela, aplicada ao preço e à frota de Foz</div><p>Até 23/11 usávamos a tabela da ANTP por idade (de 6% a 12% do preço do ônibus por ano), que dava ${rs(ant)} por km na frota toda. Em 24/11 passamos para a média das cidades: ${rs(med)} por km.</p>`) +
+    sec('As 11 cidades, com o preço e a frota de Foz', tab(['Cidade', 'Peças, R$ por km'], [
+      ...Object.keys(PC).map(n => [n, f2(PC[n])]),
+      dest(['Média das 11 (usada)', f2(med)]),
+      ['Tabela da ANTP por idade (como era)', f2(ant)]
     ])) +
     sec('Passo a passo', tab(['Etapa', 'Conta', 'Resultado'], [
-      [`Valor do ${M.nome.toLowerCase()} novo`, '—', rs0(M.preco)],
-      ['% médio de peças nos 12 anos (frota com idade média de 5,4 anos)', 'média da tabela ano a ano', '7,94% por ano'],
-      ['Peças por ano', `${rs0(M.preco)} × 7,94%`, rs0(ano)],
-      ['Km por ônibus por ano', '586.000 × 12 ÷ 105', `${n0(KM_ONIBUS_ANO)} km`],
-      dest(['Peças por km', `${rs0(ano)} ÷ ${n0(KM_ONIBUS_ANO)}`, rs(km)]),
-      dest(['Frota toda, por mês', 'R$ 1,085 × 586.000', 'R$ 636.045'])
+      ['Média das 11 cidades, frota toda', 'soma das 11 ÷ 11', rs(med)],
+      [`No ${M.nome.toLowerCase()}`, `proporcional ao preço do ônibus (${rs0(M.preco)})`, rs(M.custo.pecas)],
+      dest(['Frota toda, por mês', `${rs(med)} × 586.000`, rs0(med * KM)])
     ])) +
     sec('Óleo, lubrificantes e Arla 32', tab(['Item', 'Valor', 'De onde vem'], [
       ['Óleo, lubrificantes e Arla 32', 'R$ 0,21 por km', `Valor do edital de Foz (Anexo VIII, custo de óleos, lubrificantes e arla). ${fnt('fozEdital')}`],
       ['Só o Arla 32, para conferir', rs(0.04*NUM.consumo_media*2.05), `4% do diesel (Curitiba) × ${n3(NUM.consumo_media)} l/km × R$ 2,05 por litro`],
       ['Mão de obra da manutenção', 'fora daqui', `está no pessoal: 51 pessoas, ${rs0(NUM.itens_mes.manutencao)} por mês`]
     ])) +
-    sec('De onde vem cada número', tab(['Número', 'Valor', 'De onde vem'], [
-      ['% de peças por idade', '6% a 12%', `Planilha ANTP de Paranaguá 2024 (aba de peças). ${fnt('paranagua')}`],
-      ['Valor do ônibus', rs0(M.preco), 'Mediana de preços em editais de 2024 a 2026 (ver "Este ônibus")'],
-      ['Idade média da frota', '5,4 anos', 'Modelo do zero: frota toda nova, ônibus até 12 anos e média até 8']
+    sec('Como cada cidade calcula', lista([
+      'São Paulo, Rio de Janeiro e Rio Branco: tabela por idade (de 6% a 12% do preço do ônibus por ano; em São Paulo, de 7% a 10%). Rio Branco troca os ônibus aos 8 anos e por isso gasta menos.',
+      'Porto Alegre (7,1%), Manaus (6,5%), Grande Curitiba (8% do preço sem pneus, só nos ônibus que rodam), Campinas (6%) e Juiz de Fora (índice por km sobre o preço do ônibus): uma parte fixa do preço do ônibus.',
+      'Curitiba, Belo Horizonte e Londrina: um valor fixo por km na planilha, bem mais baixo. Os documentos não mostram de onde ele sai.'
     ])) +
-    sec('Comparação', tab(['Fonte', 'Regra', 'No básico, R$ por km'], [
-      ['Edital de Foz (FEPESE)', 'R$ 0,51 por km, com ônibus mais baratos', '0,51'],
-      ['Contrato atual de Foz', '7% por ano, fixo', rs(790464*0.07/KM_ONIBUS_ANO).replace('R$ ', '')],
-      dest(['Nosso modelo (tabela da ANTP por idade)', '7,94% por ano na média', '0,94']),
-      ['Frota mais velha (média de 8 anos o tempo todo)', '9% por ano', rs(790464*0.09/KM_ONIBUS_ANO).replace('R$ ', '')]
-    ])) +
-    sec('E se mudar?', tab(['Hipótese', 'Frota toda, R$ por km', 'Efeito na conta'], [
-      ['7% fixo, como o contrato atual', rs(1.0854*7/7.94), efeito(1.0854*7/7.94 - 1.0854)],
-      ['Contrato de 10 anos (frota mais nova, média 4,3 anos)', rs(1.006), efeito(1.006 - 1.0854)],
-      ['Frota com média de 8 anos o tempo todo (9%)', rs(1.0854*9/7.94), efeito(1.0854*9/7.94 - 1.0854)]
+    sec('E se mudar?', tab(['Hipótese', 'Peças, R$ por km', 'Km no total'], [
+      ['Tabela da ANTP por idade (como era)', f2(PE.antp[1]), ef(PE.antp[0])],
+      ['Mediana das 11 cidades', f2(PE.mediana[1]), ef(PE.mediana[0])],
+      ['7% fixo, como o contrato atual', f2(PE.p7[1]), ef(PE.p7[0])],
+      ['Valor de Curitiba', f2(PE.cwb[1]), ef(PE.cwb[0])]
     ])) +
     sec('O que isso mostra', lista([
-      'As peças custam bem mais no nosso modelo do que no edital (R$ 0,51), porque usamos preços de ônibus de 2026, com ar.',
-      'A regra de idade média também controla este custo: frota velha gasta mais peças.',
+      `A média das cidades (${rs(med)}) fica entre o edital (R$ 0,51, com ônibus mais baratos) e a tabela da ANTP (${rs(ant)}).`,
+      'O número certo para Foz só sai da conta da empresa: para o edital, vale pedir à Santa Clara o gasto real com peças da frota atual.',
       'A ANTP mais nova liga as peças ao preço do ônibus básico, e não ao de cada tipo. Com essa regra, o articulado e o padron gastariam menos.'
     ])) +
     sec('Fontes', fontes(['paranagua', 'antp', 'fozEdital', 'fozP2', 'urbs']))};
@@ -1763,7 +1914,7 @@ function detBilhetagem(M){
   const O = NUM.outros_det, pb = MOD.leve.preco, pct = NUM.desp_gerais_pct, porOnibus = pct*pb/12;
   const dc = NUM.decomp.cenarios, base = NUM.decomp.passos[NUM.decomp.passos.length - 1];
   const cen = lab => dc.find(d => d.lab.startsWith(lab));
-  return {t:'Validador, GPS e despesas da empresa', g:`${rs((O.bilhetagem + O.gerais + O.uniformes + O.apoio + O.verificador)/KM)} <small>por km</small>`, html:
+  return {t:'Validador, GPS e despesas da empresa', g:`${rs((O.bilhetagem + O.gerais + O.uniformes + O.apoio + O.verificador + O.ambiental)/KM)} <small>por km</small>`, html:
     sec('A conta', `<div class="fm">Custo do mês = operação do validador e do GPS + despesas gerais da empresa + itens pequenos</div><p>As despesas gerais são as da empresa que não são salário: água, luz, telefone, informática, contabilidade, jurídico, vigilância, material de escritório, treinamento e serviços de terceiros.</p>`) +
     sec('Passo a passo', tab(['Item', 'Conta', 'Por mês'], [
       ['Operação do validador, câmeras e GPS (edital, 108 ônibus)', `${rs(47290.18)} × 88 ÷ 108`, rs0(O.bilhetagem)],
@@ -1771,8 +1922,8 @@ function detBilhetagem(M){
       ['Uniformes (acordo coletivo: R$ 33,52 por empregado)', `R$ 33,52 × ${n0(O.uniformes/33.52)} empregados`, rs0(O.uniformes)],
       ['Veículos de apoio: combustível e manutenção', 'socorro, caminhonete e 2 carros', rs0(O.apoio)],
       ['Verificador independente (edital)', `${rs(26313.45)} por ano ÷ 12`, rs0(O.verificador)],
-      dest(['Total', '', rs0(O.bilhetagem + O.gerais + O.uniformes + O.apoio + O.verificador)]),
-      ['Por km', `÷ 586.000 km`, rs((O.bilhetagem + O.gerais + O.uniformes + O.apoio + O.verificador)/KM)]
+      dest(['Total', '', rs0(O.bilhetagem + O.gerais + O.uniformes + O.apoio + O.verificador + O.ambiental)]),
+      ['Por km', `÷ 586.000 km`, rs((O.bilhetagem + O.gerais + O.uniformes + O.apoio + O.verificador + O.ambiental)/KM)]
     ])) +
     sec('Despesas gerais: por que 3% ao ano do preço do ônibus', tab(['Fonte', 'O que usa', 'Em Foz daria (por mês)'], [
       ['Manuais de cálculo de tarifa no padrão GEIPOT/ANTP (Panambi, Mato Grosso)', '2% a 4% ao ano do preço do ônibus novo, por ônibus', `${rs0(0.02*pb/12*105)} a ${rs0(0.04*pb/12*105)}`],
@@ -1789,8 +1940,8 @@ function detBilhetagem(M){
       ['Verificador independente', `${rs(26313.45)} por ano`, 'edital de Foz'],
       ['IPVA', 'zero: ônibus de linha urbana em concessão é isento no Paraná', fnt('ipvaPR')],
       ['Seguro obrigatório', 'zero: o DPVAT acabou e o SPVAT foi revogado', ''],
-      ['Almoxarifado do edital (R$ 50 mil por mês)', 'retirado: era reposição de peças, que já está nas peças pela tabela da ANTP', 'edital de Foz, Anexo VIII'],
-      ['Custo ambiental', 'não entrou: quase nenhuma cidade usa (só Itajaí e Florianópolis, segundo o DER-PR)', fnt('derprAr')]
+      ['Almoxarifado do edital (R$ 50 mil por mês)', 'retirado: era reposição de peças, que já está nas peças', 'edital de Foz, Anexo VIII'],
+      ['Custo ambiental', 'sem linha própria: as obrigações ambientais (controle da fumaça preta, licenças da garagem, óleo usado e resíduos) entram nas despesas gerais, como na maioria das cidades. Das 11 cidades que conferimos, 4 têm a linha: Belo Horizonte (R$ 133 por ônibus por mês), Campinas (0,5% ao ano do preço do ônibus), Grande Curitiba (1%) e Rio Branco (1,25%); as outras 7 não têm. Fora delas, o DER-PR só cita Itajaí e Florianópolis. O contrato atual de Foz paga 1,5% ao ano do preço do ônibus, sem comprovação', `IT SUMOB 005/2025 (BH); FEPESE, Produto 2, p. 71; ${fnt('derprAr')}`],
     ])) +
     sec('Compra dos equipamentos (entra na parcela de capital)', tab(['Item', 'Edital (120 ônibus)', 'Ajustado para 105', 'Troca'], [
       ['Equipamentos embarcados', rs(1983321.43), rs0(1983321.43*105/120), 'a cada 10 anos'],
@@ -1805,7 +1956,7 @@ function detBilhetagem(M){
     sec('O que isso mostra', lista([
       `As despesas gerais do edital estavam baixas demais. Com 3% ao ano, a conta sobe uns ${rs0(O.gerais - 7641.13*88/108)} por mês.`,
       'Tirar o almoxarifado, que contava as peças duas vezes, devolve uns R$ 41 mil por mês.',
-      `No total, a revisão destes itens levou o km médio de ${rs(NUM.decomp.passos[3].rkm)} para ${rs(base.rkm)}.`
+      `No total, a revisão destes itens levou o km médio de ${rs(NUM.decomp.passos[3].rkm)} para ${rs(NUM.decomp.passos[4].rkm)}.`
     ])) +
     sec('Fontes', fontes(['indea', 'orlandia', 'niteroiFGV', 'urbsOut25', 'poa26', 'praiaGrande', 'santos', 'antpMetodo', 'ipvaPR', 'fozEdital']))};
 }
@@ -1874,7 +2025,7 @@ function detOnibus(M){
       `No Rio, o edital de 2026 diz que os ônibus não são bens reversíveis: ficam com a empresa. ${fnt('rioRev')}`,
       'A minuta de Foz também diz que não há bens reversíveis nem indenização (cláusula 41). Então a frota fica com a empresa, e o valor que entra no fluxo deve ser o de mercado, com fonte.'
     ]) + tab(['Hipótese', 'R$ por km', 'Por ano'], [
-      dest(['Valor contábil no fim (usado)', f2(NUM.decomp.passos[4].rkm), rs(NUM.decomp.passos[4].ano/1e6) + ' mi']),
+      dest(['Valor contábil no fim (usado)', f2(NUM.decomp.passos[NUM.decomp.passos.length - 1].rkm), rs(NUM.decomp.passos[NUM.decomp.passos.length - 1].ano/1e6) + ' mi']),
       ['Metade do valor contábil', f2(NUM.decomp.cenarios[1].rkm), rs(NUM.decomp.cenarios[1].ano/1e6) + ' mi'],
       ['Sem valor no fim (como o Rio)', f2(NUM.decomp.cenarios[0].rkm), rs(NUM.decomp.cenarios[0].ano/1e6) + ' mi']
     ]) + '<p>Sugestão para o edital: manter os ônibus como não reversíveis, pôr no fluxo o valor de mercado com fonte (vendas de seminovos ou a tabela FIPE do chassi) e deixar claro que o risco da revenda é da empresa.</p>') +
@@ -1899,7 +2050,7 @@ function detGeral(){
       `<p>O total foi achado no fluxo de caixa de 12 anos: é a receita que paga todos os custos, compra e troca os ônibus e dá à empresa 9,12% ao ano acima da inflação. ${fnt('planilha')}</p>`) +
     sec('2. O preço do km a mais (faixa 2)', tab(['Item', 'Conta', 'R$ por km'], [
       ['Diesel', `${n3(NUM.consumo_media)} l/km × ${rs(NUM.diesel)}`, n3(V.diesel)], ['Óleo, lubrificantes e Arla 32', 'edital de Foz', n3(V.oleo)],
-      ['Pneus', 'tabela da ANTP', n3(V.pneus)], ['Peças', 'tabela da ANTP por idade', n3(V.pecas)],
+      ['Pneus', 'tabela da ANTP', n3(V.pneus)], ['Peças', 'média de 11 cidades', n3(V.pecas)],
       ['Hora do motorista para o km a mais', `${rs(NUM.mot_custo)} por mês ÷ 162 horas ÷ 20 km por hora`, n3(V.hora)],
       ['Soma', '', n3(V.soma)],
       dest(['Com o ISS de 3%', `${n3(V.soma)} ÷ 0,97`, rs(P2)])
@@ -1917,7 +2068,7 @@ function detGeral(){
       `Com qualquer corte, a conta de 586 mil km dá os mesmos ${rs(C/1e6)} milhões. O corte só decide quem corre o risco se o km cair.`
     ]) + tab(['Corte', 'Até o corte', 'Acima do corte'], ['300', '400', '450', '500'].map(c => (c === '400' ? dest : (x => x))([`${c} mil km`, rs(NUM.cortes[c]), rs(P2)])))) +
     sec('6. Outra forma, sem faixas', `<p>Pagar ${rs0(F)} fixos por mês mais ${rs(P2)} por km rodado. A conta é a mesma, e a empresa nunca fica sem cobrir os custos fixos. Use o botão <b>Calcular</b> para ver a conta de qualquer km.</p>`) +
-    sec('7. O que mudou na reconferência (18 e 19/11/2026)', tab(['Passo', 'R$ por km', 'Conta do mês', 'Faixa 1', 'Faixa 2'],
+    sec('7. O que mudou na reconferência (18, 19, 23 e 24/11/2026)', tab(['Passo', 'R$ por km', 'Conta do mês', 'Faixa 1', 'Faixa 2'],
       dc.map((d, i) => (i === dc.length - 1 ? dest : (x => x))([d.lab, f2(d.rkm), rs0(d.mes), f2(d.P1), f2(d.P2)]))) +
       `<p>Detalhes de cada dado no botão "Dados conferidos", na conta do km.</p>`) +
     sec('Fontes', fontes(['planilha', 'antp', 'fozEdital', 'fozP2', 'anpDistSem', 'derprAr', 'umuarama', 'amep', 'pg', 'urbs']))};
@@ -1928,44 +2079,70 @@ function detConf(){
   const ok = '<b style="color:#1f7a4d">Conferido</b>', mud = '<b style="color:#b06a00">Corrigido</b>', at = '<b style="color:#a33">Atenção</b>';
   const efe = d => `${d.rkm >= base.rkm ? '+' : '−'}${f2(Math.abs(d.rkm - base.rkm))} por km · ${d.ano >= base.ano ? '+' : '−'}${rs(Math.abs(d.ano - base.ano)/1e6)} mi por ano`;
   return {t:'Dados conferidos', g:`${rs(NUM.rkm)} <small>por km · ${rs(NUM.conta_ano/1e6)} mi por ano</small>`, html:
-    sec('Resumo', `<p>Em 18 e 19/11/2026 reconferimos cada número do modelo nas fontes. A conta subiu de ${rs(dc[0].rkm)} para ${rs(base.rkm)} por km.</p>` +
+    sec('Resumo', `<p>Em 18 e 19/11/2026 reconferimos cada número do modelo nas fontes. A conta subiu de ${rs(dc[0].rkm)} para ${rs(dc[dc.length - 2].rkm)} por km. Em 23/11/2026 conferimos tudo de novo, dado por dado, e medimos a garagem: o ISS e a garagem deixaram de ser pontos de atenção. Em 24/11/2026 ficou decidido que o custo ambiental não tem linha própria: ele entra nas despesas gerais. No mesmo dia, as peças passaram da tabela da ANTP para a média de 11 cidades, e a conta foi para ${rs(base.rkm)} por km.</p>` +
       tab(['Passo', 'R$ por km', 'Por ano'], dc.map((d, i) => (i === dc.length - 1 ? dest : (x => x))([d.lab, f2(d.rkm), rs(d.ano/1e6) + ' mi']))) ) +
     sec('Item por item', tab(['Dado', 'Valor usado', 'Situação', 'O que achamos'], [
-      ['Preço do diesel', `${rs(NUM.diesel)} por litro`, mud, `Era a média de setembro (R$ 6,36). O último dado semanal da ANP é R$ 6,58, e a bomba está parada desde então. ${fnt('anpDistSem')}`],
+      ['Preço do diesel', `${rs(NUM.diesel)} por litro`, ok, `Conferido em 23/11: a ANP ainda não publicou semanas novas de preço de distribuição. A última (20 a 26/9) é R$ 6,578, e o mês de setembro fechou em R$ 6,36. Na bomba, Foz está parada entre R$ 7,57 e R$ 7,63 desde o começo de outubro (R$ 7,63 de 8 a 14/11). ${fnt('anpDistSem')} ${fnt('anpLpc26')}`],
       ['Consumo de diesel', `${n3(NUM.consumo_media)} l/km na média`, mud, 'Era de ônibus sem ar. Somamos 14% pelo ar (estudos de 13% a 17%).'],
-      ['Salário do motorista', rs(NUM.sal), ok, 'Bate com o acordo coletivo 2026/27 (já com os 5% de março de 2026).'],
-      ['Benefícios do motorista', rs(NUM.ben), ok, 'Cesta R$ 779,48 + cobrança R$ 309,75 + cesta de Natal ÷ 12. Bate com o acordo.'],
-      ['Salários de fiscais, manutenção e limpeza', 'pisos do acordo', mud, 'Eram os de Curitiba. Agora são os de Foz: fiscal R$ 3.118,63, mecânico R$ 3.898,29, limpeza R$ 2.338,97.'],
-      ['Encargos', '63,78%', ok, 'INSS cheio, que vale de 2028 em diante. Em 2027 seria um pouco menos (15% da folha + 0,8% da receita).'],
-      ['Motoristas por ônibus', '2,11', ok, 'Contrato atual de Foz. Com a jornada de 7h20 do acordo, a rede nova pode pedir mais (2,5 a 3,0).'],
+      ['Salário do motorista', rs(NUM.sal), ok, `Reconferido em 23/11 no acordo coletivo 2026/27, cláusula 3ª (já com os 5% de março de 2026). ${fnt('actFoz')}`],
+      ['Benefícios do motorista', rs(NUM.ben), ok, 'Cesta R$ 779,48 (cl. 4ª) + cobrança de passagens R$ 309,75 (cl. 5ª) + cesta de Natal R$ 261,55 ÷ 12. Reconferido.'],
+      ['Salários e benefícios de fiscais, manutenção e limpeza', 'pisos do acordo', ok, 'Fiscal R$ 3.118,63 (80% do motorista), mecânico R$ 3.898,29, limpeza R$ 2.338,97 (60%). Cesta de R$ 779,48 para quem tem o piso do motorista e de R$ 623,58 para os demais. Reconferido.'],
+      ['Uniformes', 'R$ 33,52 por empregado por mês', ok, 'Auxílio uniforme da cláusula 7ª do acordo. Reconferido.'],
+      ['Encargos', '63,78%', ok, `INSS cheio, que vale de 2028 em diante. Pela Lei 14.973/2024, em 2026 são 10% sobre a folha mais 1,2% da receita e, em 2027, 15% mais 0,8%: até lá o custo é um pouco menor. ${fnt('reoneracao')}`],
+      ['Motoristas por ônibus', '2,11', ok, 'Reconferido: a planilha do contrato atual usa 2,1061 motorista e 0,1970 fiscal por ônibus (Produto 2, p. 72). Com a jornada de 7h20 do acordo (cl. 11ª), a rede nova pode pedir mais (2,5 a 3,0).'],
       ['Preço dos ônibus', 'R$ 776 mil a 1,95 mi', ok, 'Medianas de editais 2024–26, já com ar e Euro 6. O Rio 2026 usa R$ 1,08 mi no básico de piso baixo.'],
-      ['Pneus', 'R$ 2.182 + recapagem R$ 850', ok, 'PNCP 2026 no Paraná. O preço pago nas compras é menor (R$ 1.392): o nosso é conservador.'],
-      ['Peças', 'ANTP por idade (6% a 12%)', ok, 'Mais alto que o edital (R$ 0,51 por km). Inclui a manutenção do ar.'],
-      ['Óleo, lubrificantes e Arla', 'R$ 0,21 por km', ok, 'Do edital de Foz. Curitiba dá menos (uns R$ 0,09): o nosso é conservador.'],
-      ['ISS', '3%', at, `O edital usa 3%, mas o cadastro nacional da NFS-e mostra 5% para transporte coletivo em Foz. Confirmar na Fazenda. A lei deixa a cidade zerar o ISS do transporte coletivo (exceção ao mínimo de 2%). ${fnt('issFoz')}`],
-      ['Taxa de retorno', '9,12% ao ano', ok, 'Mediana do Paraná (Umuarama, AMEP, Ponta Grossa, Curitiba).'],
+      ['Pneus', 'R$ 2.182 + recapagem R$ 850', ok, `PNCP 2026 no Paraná. O preço pago nas compras é menor (R$ 1.392): o nosso é conservador. A vida de 141.046 km com 1,4 recapagem foi reconferida na planilha de Jacareí. ${fnt('jacarei')}`],
+      ['Peças', `${rs(NUM.pecas_media)} por km (média de 11 cidades)`, mud, `Era a tabela da ANTP por idade (${rs(NUM.pecas_antp)} por km). Em 24/11 passou para a média das 11 cidades da aba "Outras cidades". Ainda acima do edital (R$ 0,51).`],
+      ['Óleo, lubrificantes e Arla', 'R$ 0,21 por km', ok, 'Do edital de Foz (Anexo VIII), reconferido. Curitiba dá menos (uns R$ 0,09): o nosso é conservador.'],
+      ['ISS', '3%', ok, `Resolvido em 23/11: a lei de Foz fixa 3% para o transporte coletivo prestado por concessionária (Código Tributário, § 6º, na redação da LC 392/2022). O cadastro nacional da NFS-e mostra 5%, mas vale a lei. ${fnt('lc392')}`],
+      ['Taxa de retorno', '9,12% ao ano', ok, `Mediana do Paraná (Umuarama 8,57%, AMEP 8,82%, Ponta Grossa 9,41%, Curitiba 10,14%). O de Ponta Grossa foi reconferido no estudo do edital. ${fnt('pgWacc')}`],
       ['Valor da frota no fim', `${rs(NUM.valor_final/1e6)} mi (valor contábil)`, at, 'É comum pôr no fluxo, mas o TCE-PR pede valor de mercado com prova. Ver "Este ônibus".'],
-      ['Garagem', 'R$ 100 mil por mês', at, 'Estimativa nossa. Falta uma cotação de aluguel em Foz.'],
+      ['Garagem', 'R$ 100 mil por mês', ok, 'Conferido em 23/11: medimos a garagem da Santa Clara e comparamos com aluguéis de Foz. A conta dá de R$ 74 mil a R$ 131 mil por mês, com o meio em R$ 96 mil. Ver a seção Garagem, abaixo.'],
       ['Despesas gerais da empresa', `${rs0(NUM.outros_det.gerais)} por mês (3% ao ano do preço do básico, por ônibus)`, mud, 'O edital punha só R$ 7.641 por mês. Agora segue a faixa da ANTP (2% a 4%), as propostas de Niterói (2,88% a 3%) e Curitiba (R$ 0,35 por km).'],
-      ['Almoxarifado do edital', 'retirado', mud, 'Era reposição de peças, que já estava nas peças pela tabela da ANTP: contava duas vezes.'],
-      ['Pintura, uniformes, veículos de apoio e verificador', 'incluídos', mud, 'Itens da tabela da ANTP que faltavam. O IPVA é zero: ônibus urbano em concessão é isento no Paraná.']
+      ['Custo ambiental', 'sem linha própria', mud, 'Decidido em 24/11. As obrigações ambientais da empresa (programa de controle da fumaça preta, Portaria IBAMA 85/1996; licença da garagem e do tanque de diesel, CONAMA 237/1997 e 273/2000; óleo usado e resíduos, Lei 12.305/2010) entram nas despesas gerais. Nenhuma lei obriga a ter essa linha. Entre as 11 cidades que conferimos, só 4 têm: Belo Horizonte (R$ 133 por ônibus por mês), Campinas (0,5% ao ano do preço do ônibus), Grande Curitiba (1%) e Rio Branco (1,25%). Nossas despesas gerais (3% ao ano) já passam do que BH e Campinas pagam de despesas gerais e ambiental juntas e empatam com a Grande Curitiba (2% + 1%); só Rio Branco paga mais.'],
+      ['Almoxarifado do edital', 'retirado', mud, 'Era reposição de peças, que já está nas peças: contava duas vezes.'],
+      ['Validador, GPS, verificador e pintura', 'do edital', ok, 'Reconferidos no Anexo VIII: equipamentos embarcados R$ 47.290,18 por mês (ajustado para 88 ônibus), verificador R$ 26.313,45 por ano, pintura R$ 15 mil por ônibus (no nosso, só quando o ônibus entra).'],
+      ['Veículos de apoio', 'R$ 920 mil a cada 10 anos + R$ 10 mil por mês', at, 'Conta nossa: guincho, caminhonete e 2 carros. Pesa pouco (cerca de R$ 0,04 por km).'],
+      ['IPVA', 'zero', ok, `Ônibus de linha urbana em concessão é isento no Paraná (Lei 14.260/2003, art. 14, IV). Reconferido. ${fnt('ipvaPR')}`]
     ])) +
+    sec('Garagem: medida e aluguel', `<p>A garagem da Viação Santa Clara fica na Av. Tancredo Neves, 3375, no Porto Belo, ao lado da UNILA. Medimos pela imagem de satélite do Google Maps. ${fnt('garagemMapa')}</p>` +
+      tab(['Parte', 'Área', 'Como medimos'], [
+        ['Terreno todo (cercado)', 'cerca de 30 mil m² (3,0 ha)', 'Contorno de 5 lados na imagem de satélite, com a escala do mapa (0,54 m por ponto). Margem de uns 5%.'],
+        ['Galpão de telhado claro (oficina)', 'cerca de 1.540 m²', 'Imagem mais próxima (0,27 m por ponto)'],
+        ['Galpão de telhado escuro', 'cerca de 1.380 m²', 'Idem'],
+        ['4 prédios de escritório e apoio na frente', 'cerca de 450 m²', 'Idem'],
+        dest(['Área construída', 'cerca de 3.360 m²', 'O resto, uns 26.600 m², é pátio para os ônibus'])]) +
+      `<p>Aluguéis anunciados em Foz em novembro de 2026:</p>` +
+      tab(['Tipo', 'Anúncios', 'R$ por m² por mês'], [
+        ['Galpões e barracões (19 anúncios, de 240 a 1.500 m²)', 'Novo Mundo 912 m² por R$ 22 mil; Parque Monjolo 1.500 m² por R$ 40 mil; Morumbi II 1.000 m² por R$ 16 mil; Parque Presidente 590 m² por R$ 15 mil', 'mediana R$ 24; de R$ 15 a 29 na maior parte'],
+        ['Terrenos grandes (1.800 m² ou mais)', '8.713 m² por R$ 8.200; 2.070 m² por R$ 4.000; 1.800 m² por R$ 2.000; 1.980 m² na BR-277 por R$ 10.000', 'R$ 0,94 a 1,93 (a BR-277 chega a R$ 5)'],
+        ['Áreas à venda, para conferir', '10.300 m² por R$ 3,6 mi; 6.000 m² na BR-277 por R$ 2,5 mi', 'R$ 350 a 420 por m² de terreno']]) +
+      tab(['Conta do aluguel', 'Galpões (3.360 m²)', 'Pátio (26.600 m²)', 'Por mês'], [
+        ['Baixa', 'R$ 15 por m²', 'R$ 0,90 por m²', rs0(74368)],
+        dest(['Do meio', 'R$ 20 por m²', 'R$ 1,10 por m²', rs0(96498)]),
+        ['Alta', 'R$ 24 por m²', 'R$ 1,90 por m²', rs0(131224)]]) +
+      lista([
+        'Conferência pelo valor: terreno de 30 mil m² a R$ 350 por m² (R$ 10,5 mi) mais os galpões a uns R$ 1.500 por m² (R$ 5 mi), alugados a 0,6% ao mês, dão uns R$ 93 mil.',
+        'Os R$ 100 mil do modelo ficam no meio dessa faixa. Pesam R$ 0,17 por km.',
+        'O terreno tem tamanho para os 105 ônibus: dá uns 250 m² de pátio por ônibus.',
+        'Os anúncios mudam todo dia e o preço fechado costuma ser menor que o anunciado. Uma cotação de imobiliária troca a estimativa pelo valor real.']) +
+      `<p>${fnt('aluguelGalpoes')} · ${fnt('aluguelBuskaza')} · ${fnt('aluguelTerrenos')} · ${fnt('aluguelImovelweb')} · ${fnt('vendaAreas')}</p>`) +
     sec('E se mudar?', tab(['Hipótese', 'Efeito'], NUM.decomp.cenarios.map(d => [d.lab, efe(d)]))) +
-    sec('Fontes', fontes(['anpDistSem', 'anpLpc26', 'derprAr', 'urbs', 'issFoz', 'tcePR', 'amepTCE', 'rioRev', 'fozEdital', 'planilha']))};
+    sec('Fontes', fontes(['anpDistSem', 'anpLpc26', 'derprAr', 'urbs', 'lc392', 'issFoz', 'reoneracao', 'pgWacc', 'jacarei', 'ipvaPR', 'garagemMapa', 'aluguelGalpoes', 'aluguelTerrenos', 'tcePR', 'amepTCE', 'rioRev', 'fozEdital', 'actFoz', 'planilha']))};
 }
 
 const DET = {pneus:detPneus, diesel:detDiesel, motorista:detMotorista, pecas:detPecas, ar:detAr, bilhetagem:detBilhetagem, onibus:detOnibus, geral:detGeral, conf:detConf};
 const detEl = document.getElementById('det');
 let detAtual = null;
 function abrirDetalhe(k){
-  const fn = (cenAtual !== 'nosso' && DETF[k]) || DET[k]; if (!fn) return;
+  const fn = ehCid(cenAtual) ? (() => detCid(k)) : ((cenAtual !== 'nosso' && DETF[k]) || DET[k]); if (!fn) return;
   detAtual = k;
   const M = MOD[atual], d = fn(M);
   detEl.innerHTML = `<div class="dbox" role="document"><header class="dtopo"><span class="ic">${IC[k === 'geral' ? 'onibus' : k] || IC.onibus}</span>
-    <div><div class="sub">${cenAtual === 'nosso' ? 'Como chegamos a esse valor' : cenAtual === 'fep' ? 'Como a FEPESE chegou a esse valor' : 'FEPESE ajustado'}${k === 'geral' || k === 'conf' ? '' : ' · ' + M.nome}</div><h2 id="detT">${d.t}</h2></div>
+    <div><div class="sub">${cenAtual === 'nosso' ? 'Como chegamos a esse valor' : ehCid(cenAtual) ? 'Foz com a conta ' + deCid(cenAtual) : cenAtual === 'fep' ? 'Como a FEPESE chegou a esse valor' : 'FEPESE ajustado'}${k === 'geral' || k === 'conf' ? '' : ' · ' + M.nome}</div><h2 id="detT">${d.t}</h2></div>
     <button class="x" aria-label="Fechar">${IC.fechar}</button></header>
     <div class="dcorpo"><div class="grande">${d.g}</div>${d.html}
-    <p class="nota">${cenAtual === 'nosso' ? 'Valores do modelo do zero (contrato de 12 anos, 105 ônibus, 586 mil km por mês).' : `Planilha da FEPESE (Anexo VIII) refeita por nós${cenAtual === 'fepaj' ? ', com os dados ajustados' : ''}: 120 ônibus, contrato de 20 anos, 586 mil km por mês. A reprodução da planilha dá R$ 11,22 com os dados do edital, contra R$ 10,99 do edital; por isso os valores foram corrigidos na mesma proporção (−2%).`} Fontes com link abrem o documento oficial.</p></div></div>`;
+    <p class="nota">${cenAtual === 'nosso' ? 'Valores do modelo do zero (contrato de 12 anos, 105 ônibus, 586 mil km por mês).' : ehCid(cenAtual) ? `Modelo de Foz (105 ônibus, 586 mil km por mês, contrato de 12 anos) com os coeficientes da planilha oficial de ${CEN_NOME[cenAtual]} (${CID[cenAtual].cid.ano}).` : `Planilha da FEPESE (Anexo VIII) refeita por nós${cenAtual === 'fepaj' ? ', com os dados ajustados' : ''}: 120 ônibus, contrato de 20 anos, 586 mil km por mês. A reprodução da planilha dá R$ 11,22 com os dados do edital, contra R$ 10,99 do edital; por isso os valores foram corrigidos na mesma proporção (−2%).`} Fontes com link abrem o documento oficial.</p></div></div>`;
   detEl.hidden = false; detEl.querySelector('.x').focus();
 }
 function fecharDetalhe(){ detEl.hidden = true; detAtual = null; }
@@ -1976,11 +2153,12 @@ addEventListener('keydown', e => { if (e.key === 'Escape' && !detEl.hidden) fech
 Object.assign(FONTES, {
   spPrecos: ['Prefeitura de São Paulo, preços referenciais de ônibus (portarias SMT/SF, usadas no subsídio à troca por elétricos)', 'https://prefeitura.sp.gov.br/web/mobilidade/w/pre%C3%A7os-referenciais'],
   spPort26: ['São Paulo, Portaria Conjunta SMT.GAB/SF nº 5/2026 (tabela de maio de 2026)', 'https://prefeitura.sp.gov.br/documents/d/mobilidade/portaria-conjunta-smt-gab-sf-n-5-2026-pdf'],
-  errosFep: ['Nosso documento: erros e desatualizações no estudo da FEPESE', 'https://claude.ai/artifact/89FXGJw5pMKxKc2ATscb35']
+  errosFep: ['Nosso documento: erros e desatualizações no estudo da FEPESE', '']
 });
 const NUM0 = JSON.parse(JSON.stringify(NUM));
 const MOD0 = Object.fromEntries(ORDEM.map(k => [k, JSON.parse(JSON.stringify({preco:MOD[k].preco, parcela:MOD[k].parcela, consumo:MOD[k].consumo, qtd:MOD[k].qtd, custo:MOD[k].custo, total:MOD[k].total}))]));
 const CEN_NOME = {nosso:'Nosso modelo', fep:'FEPESE', fepaj:'FEPESE ajustado'};
+if (typeof CID !== 'undefined') for (const k in CID) CEN_NOME[k] = CID[k].cid.nome;
 const TIPO_FEP = {midi:'Midi', leve:'Leve', padron:'Padron', articulado:'Articulado'};
 const NOME_TIPO = {midi:'Midi', leve:'Básico', padron:'Padron', articulado:'Articulado 18 m'};
 const PRECO_SP26 = {midi:554596.24, leve:573141.45, padron:828619.48, articulado:1451047.52};
@@ -1990,29 +2168,36 @@ const FONTE_PRECO_AJ = {
   padron:'mediana de Curitiba 2026 e Jacareí 2026',
   articulado:'Curitiba, concessão 2026'};
 const pct2 = v => (v*100).toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2}) + '%';
-function seloCen(){ return cenAtual === 'nosso' ? '' : `<span class="selo${cenAtual === 'fepaj' ? ' aj' : ''}">${CEN_NOME[cenAtual]}</span>`; }
+function seloCen(){ if (cenAtual === 'nosso') return ''; const cd = typeof CID !== 'undefined' && CID[cenAtual];
+  return `<span class="selo${cenAtual === 'fepaj' ? ' aj' : ''}${cd ? ' cd' : ''}">${cd ? 'Foz com a conta ' + deCid(cenAtual) : CEN_NOME[cenAtual]}</span>`; }
 
 function aplicarCenario(c){
   cenAtual = c;
-  const D = c === 'nosso' ? NUM0 : Object.assign({}, NUM0, FEP[c]);
+  const SRC = c === 'nosso' ? null : (FEP[c] || CID[c]);
+  const D = c === 'nosso' ? NUM0 : Object.assign({}, NUM0, SRC);
   for (const k of Object.keys(NUM)) delete NUM[k];
   Object.assign(NUM, JSON.parse(JSON.stringify(D)));
   for (const k of ORDEM){
-    const T = c === 'nosso' ? MOD0[k] : FEP[c].tipos[k];
+    const T = c === 'nosso' ? MOD0[k] : SRC.tipos[k];
     Object.assign(MOD[k], JSON.parse(JSON.stringify({preco:T.preco, parcela:T.parcela, consumo:T.consumo, qtd:T.qtd, custo:T.custo, total:T.total})));
   }
   FROTA_PADRAO = Object.fromEntries(ORDEM.map(k => [k, MOD[k].qtd]));
   calcFrota = {...FROTA_PADRAO}; calcKm = NUM.km;
   document.body.classList.toggle('cen-fep', c === 'fep');
   document.body.classList.toggle('cen-fepaj', c === 'fepaj');
-  document.querySelectorAll('#cen button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cen === c)));
-  document.getElementById('chipCen').textContent = c === 'nosso' ? '' : CEN_NOME[c] + ' · ';
+  document.body.classList.toggle('cen-cid', !!CID[c]);
+  const iR = ITENS.find(i => i[0] === 'rps'); if (iR) iR[1] = `Lucro a mais (RPS de ${(100 * (NUM.rps_pct || 0)).toLocaleString('pt-BR', {maximumFractionDigits:2})}%)`;
+  document.querySelectorAll('#painel [data-cen]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cen === c)));
+  document.getElementById('chipCen').textContent = c === 'nosso' ? '' : (CID[c] ? 'Foz com a conta ' + deCid(c) : CEN_NOME[c]) + ' · ';
   document.getElementById('chipFrota').textContent = NUM.frota;
   document.getElementById('chipOper').textContent = NUM.oper;
   document.getElementById('chipMedia').textContent = `${brl(NUM.rkm)}/km`;
-  document.getElementById('corteT1').textContent = c === 'nosso' ? 'Faixa de corte mínima' : 'Corte (a FEPESE não tem)';
+  if (typeof ajustaChip === 'function') ajustaChip();
+  if (typeof marcaGrupos === 'function') marcaGrupos();
+  document.getElementById('corteT1').textContent = (c === 'nosso' || CID[c]) ? 'Faixa de corte mínima' : 'Corte (a FEPESE não tem)';
   document.getElementById('corteT3').textContent = `até ${brl(NUM.P1)} · acima ${brl(NUM.P2)}`;
   document.getElementById('contaVal').textContent = brl(MOD[atual].total);
+  document.getElementById('contaRot').textContent = 'valor médio do km do ' + MOD[atual].nome.toLowerCase();
   montarFaixa();
   if (!jan.hidden && janelaAtual){ if (janelaAtual === 'calc') abrirCalc(); else abrir(janelaAtual); }
   if (!detEl.hidden && detAtual) abrirDetalhe(detAtual);
@@ -2069,11 +2254,12 @@ function conteudoFep(k){
       f: aj ? pre + 'estudos do DER-PR (2024), ICCT/SPTrans, Maceió e Curitiba (2026).'
         : pre + 'Produto 3, Tabela 13 (p. 190–191) e Anexo VIII.'};
     case 'bilhetagem': {
-      const tot = (I.embarcados + I.adm + I.almox + I.verif_pintura)/K;
+      const tot = (I.embarcados + I.adm + I.almox + I.verif_pintura + (I.ambiental || 0))/K;
       return {fp:true, t:'Validador e despesas da empresa', g:`${brl(tot)} <small>por km</small>`, l:[
         'Validador, câmeras e GPS: R$ 47.290 por mês',
         aj ? `Despesas de administração: 3% ao ano do preço do ônibus básico, ${brl0(I.adm)} por mês`
            : 'Despesas de administração: R$ 7.641 por mês para a empresa toda (R$ 64 por ônibus), com seguros, licenciamento e despesas gerais',
+        aj ? 'Custo ambiental: sem linha própria, entra nas despesas de administração (como no nosso modelo)' : 'Custo ambiental: a planilha não tem essa linha',
         'Almoxarifado: R$ 50.067 por mês; verificador independente: R$ 26.313 por ano',
         'Pintura: R$ 15 mil por ônibus a cada 3 anos; garagem: aluguel de R$ 50 mil por mês'],
         f: aj ? pre + 'manuais da ANTP e do INDEA-MT e propostas em Niterói (FGV): de 2% a 4% ao ano do preço do ônibus.'
@@ -2218,7 +2404,7 @@ function detFepAr(M){
 }
 function detFepBilhetagem(M){
   const I = NUM.itens_mes;
-  return detFepItem('bilhetagem', {t:'Validador e despesas da empresa', g:`${rs((I.embarcados + I.adm + I.almox + I.verif_pintura)/NUM.km)} <small>por km</small>`,
+  return detFepItem('bilhetagem', {t:'Validador e despesas da empresa', g:`${rs((I.embarcados + I.adm + I.almox + I.verif_pintura + (I.ambiental || 0))/NUM.km)} <small>por km</small>`,
     papel:[
       ['Validador, câmeras e GPS (operação)', 'R$ 47.290 por mês', 'Anexo VIII'],
       ['Validador, câmeras e GPS (compra)', 'R$ 1,98 milhão, trocado em 10 anos', 'Anexo VIII'],
@@ -2227,22 +2413,25 @@ function detFepBilhetagem(M){
       ['Garagem', 'aluguel de R$ 50 mil por mês e R$ 5,15 milhões em obras', 'Anexo VIII'],
       ['Verificador independente', 'R$ 26.313 por ano', 'Anexo VIII'],
       ['Pintura', 'R$ 15 mil por ônibus a cada 3 anos', 'Anexo VIII'],
+      ['Custo ambiental', 'não tem linha; licenças, resíduos e passivos ambientais ficam por conta e risco da empresa', 'Anexo VIII; Anexo VII, cl. 25.7; Anexo XIV'],
       ['Tributos', 'ISS de 3% e IR de 34%; o ICMS de 9,60% aparece, mas não entra na conta', 'Anexo VIII']],
     prob:[
       'Os R$ 7.641 por mês têm de pagar despesas gerais, seguros, licenciamento e outras despesas da empresa toda. É 15 vezes menos do que o próprio texto da FEPESE diz.',
       `Outras referências ficam de 2% a 4% do preço do ônibus por ano: ${fnt('indea')}; ${fnt('niteroiFGV')}; ${fnt('poa26')}.`,
-      'Repintar a frota toda a cada 3 anos não tem justificativa no estudo (aqui a FEPESE errou para cima).'],
+      'Repintar a frota toda a cada 3 anos não tem justificativa no estudo (aqui a FEPESE errou para cima).',
+      'O custo ambiental não tem linha: a empresa põe no preço sem mostrar. E o manual de revisão da FEPESE (Produto 4) tem um coeficiente ambiental pelo gasto real, sem teto: na primeira revisão a empresa pode pedir para incluir.'],
     aj:[
       ['Despesas de administração', 'R$ 7.641 por mês', `3% ao ano do básico (R$ 790.464) × 120 ÷ 12 = ${rs0(FEP.adm3)} por mês`, `${fnt('indea')} · ${fnt('niteroiFGV')}`],
+      ['Custo ambiental', 'não tem', 'não tem: entra nas despesas de administração de 3%, como no nosso modelo', ''],
       ['Validador, garagem, verificador, pintura e almoxarifado', 'como no papel', 'mantidos como a FEPESE pôs', '']]});
 }
 const ROT_FEP = {motoristas:'Motoristas (3,834 por ônibus)', manutencao:'Manutenção, administração e diretoria (27%)', diesel:'Diesel',
   capital:'Ônibus, garagem e equipamentos (parcela com retorno de 9,77%)', ir:'Imposto de renda', rps:'Lucro a mais (RPS de 5,02%)', pecas:'Peças',
   iss:'ISS (3%)', oleo:'Óleo e Arla 32', pneus:'Pneus', almox:'Almoxarifado', verif_pintura:'Verificador independente e pintura',
-  garagem:'Aluguel da garagem', embarcados:'Validador, câmeras e GPS', adm:'Despesas de administração'};
+  garagem:'Aluguel da garagem', embarcados:'Validador, câmeras e GPS', adm:'Despesas de administração', ambiental:'Custo ambiental (teto de 1%)'};
 function detFepGeral(){
   const aj = cenAtual === 'fepaj', I = NUM.itens_mes, K = NUM.km, P = FEP.fep, A = FEP.fepaj, E = FEP.ese, N0 = NUM0;
-  const itens = Object.entries(I).sort((a, b) => b[1] - a[1]).map(([k, v]) => [ROT_FEP[k] || k, rs0(v), rs(v/K)]);
+  const itens = Object.entries(I).filter(([k, v]) => v > 0).sort((a, b) => b[1] - a[1]).map(([k, v]) => [ROT_FEP[k] || k, rs0(v), rs(v/K)]);
   itens.push(dest(['Total', rs0(NUM.conta_mes), rs(NUM.rkm)]));
   const passos = FEP.passos.map(([l, v], i) => { const r = [i ? '+ ' + l.charAt(0).toLowerCase() + l.slice(1) : l, rs(v), rs0(v*K)]; return (i === 0 || i === FEP.passos.length - 1) ? dest(r) : r; });
   const pesF = P.tipos.leve.custo.pessoal, pesA = A.tipos.leve.custo.pessoal, pesN = N0.tipos.leve.custo.pessoal;
@@ -2253,7 +2442,7 @@ function detFepGeral(){
       'Motoristas: 3,834 por ônibus rodando. Manutenção, administração e diretoria: mais 27% desse valor.',
       'Diesel, pneus, peças e óleo são por km rodado, com 5% de km vazios a mais.',
       'Um valor só por km, sem faixa de corte. No edital, para 799 mil km por mês, dá R$ 10,99. Aqui estão os mesmos números com os 586 mil km de hoje.',
-      aj ? 'O ajustado troca só o que faltou ou ficou velho (ônibus, diesel com ar, pneus, peças, encargos e despesas de administração). Frota, motoristas por ônibus e lucro a mais ficaram como a FEPESE pôs.' : 'Aqui os números são os do papel. Use "FEPESE ajustado" para ver com os dados de hoje.'])) +
+      aj ? 'O ajustado troca só o que faltou ou ficou velho (ônibus, diesel com ar, pneus, peças, encargos, e despesas de administração). Frota, motoristas por ônibus e lucro a mais ficaram como a FEPESE pôs.' : 'Aqui os números são os do papel. Use "FEPESE ajustado" para ver com os dados de hoje.'])) +
     sec('A conta do mês', tab(['Item', 'Por mês', 'Por km'], itens)) +
     sec('Do papel ao ajustado', tab(['Passo (586 mil km por mês)', 'R$ por km', 'Conta por mês'], passos)) +
     sec('O que o ajustado manteve como a FEPESE pôs', lista([
@@ -2313,6 +2502,107 @@ function detFepConf(){
 }
 const DETF = {diesel:detFepDiesel, pneus:detFepPneus, pecas:detFepPecas, onibus:detFepOnibus, motorista:detFepMotorista, ar:detFepAr,
   bilhetagem:detFepBilhetagem, geral:detFepGeral, conf:detFepConf};
+
+/* ================= abas das outras cidades: Foz com os coeficientes de cada cidade ================= */
+const ORDEM_CID = ['cid_cwb', 'cid_rmc', 'cid_lon', 'cid_poa', 'cid_bh', 'cid_mao', 'cid_jf', 'cid_sp', 'cid_rio', 'cid_cps', 'cid_rb'];
+function deNome(n){ return (n === 'Rio de Janeiro' ? 'do ' : n === 'Grande Curitiba' ? 'da ' : 'de ') + n; }          // "a conta do Rio de Janeiro", "de São Paulo"
+function deCid(c){ return deNome(CEN_NOME[c]); }
+function oNome(n){ return (n === 'Rio de Janeiro' ? 'o ' : n === 'Grande Curitiba' ? 'a ' : '') + n; }               // "o que o Rio de Janeiro usa"
+const ehCid = c => !!(typeof CID !== 'undefined' && CID[c]);
+const CHAVES_CID = {
+  motorista: ['Motoristas', 'Fiscais', 'Manutenção', 'Administração', 'Encargos', 'Lavadores'],
+  diesel: ['Diesel'], ar: ['Diesel'], pneus: ['Pneus'], pecas: ['Peças', 'Óleo'],
+  bilhetagem: ['Despesas', 'Administração e despesas', 'Custo ambiental', 'Seguro', 'Taxa de gerenciamento', 'Garagem', 'Tecnologia', 'Pedágio', 'PIS', 'Frota de apoio', 'ISS'],
+  onibus: ['Retorno', 'Vida', 'Revenda', 'Lucro', 'Imposto de renda', 'Tarifa por km', 'Idade']
+};
+function linhasCid(k){
+  const C = CID[cenAtual].cid, ch = CHAVES_CID[k];
+  return ch ? C.itens.filter(r => ch.some(c => r[0].startsWith(c))) : C.itens;
+}
+function fonteCid(chave){
+  const C = CID[cenAtual].cid;
+  if (!chave) return 'ficou o de Foz';
+  const doc = C.docs.find(d => d[1] === C.urls[chave]);
+  return `<a href="${C.urls[chave]}" target="_blank" rel="noopener">${doc ? doc[0] : 'documento oficial'}</a>`;
+}
+function nomeCid(){ return CID[cenAtual].cid.nome; }
+
+/* janelinhas */
+function conteudoCid(k){
+  if (!['motorista', 'diesel', 'pneus', 'pecas', 'ar', 'bilhetagem', 'onibus'].includes(k)) return null;
+  const C = CID[cenAtual].cid, M = MOD[atual], N0 = NUM0, I = NUM.itens_mes, K = NUM.km;
+  const ls = linhasCid(k).map(r => `<b>${r[0]}</b>: ${r[2]}${r[3] ? '' : ' (a cidade não informa)'}`);
+  const g = {
+    motorista: `${brl((I.motoristas + I.fiscais + I.manutencao + I.limpeza + I.adm)/K)} <small>por km de pessoal</small>`,
+    diesel: `${brl(M.custo.diesel)} <small>por km</small>`, ar: `${brl(M.custo.diesel)} <small>por km de diesel</small>`,
+    pneus: `${brl(M.custo.pneus)} <small>por km</small>`, pecas: `${brl(M.custo.pecas)} <small>por km</small>`,
+    bilhetagem: `${brl(I.outros/K)} <small>por km</small>`, onibus: `${brl(M.custo.onibus)} <small>por km</small>`
+  }[k];
+  const nosso = {
+    motorista: (N0.itens_mes.motoristas + N0.itens_mes.fiscais + N0.itens_mes.manutencao + N0.itens_mes.limpeza + N0.itens_mes.adm)/N0.km,
+    diesel: MOD0[atual].custo.diesel, ar: MOD0[atual].custo.diesel, pneus: MOD0[atual].custo.pneus, pecas: MOD0[atual].custo.pecas,
+    bilhetagem: N0.itens_mes.outros/N0.km, onibus: MOD0[atual].custo.onibus
+  }[k];
+  const t = {motorista:'Motoristas e equipe', diesel:'Diesel', ar:'Ar-condicionado', pneus:'Pneus', pecas:'Peças, óleo e Arla',
+             bilhetagem:'Despesas da empresa', onibus:'Ônibus e retorno do capital'}[k];
+  return {t, g, l: ls.concat([`No nosso modelo: ${brl(nosso)} por km`]), fp:true,
+    f:`Foz com os coeficientes ${deNome(C.nome)} (${C.ano}). Preços, frota, km, garagem e ISS são os de Foz. Fonte: ${C.docs.map(d => d[0]).join('; ')}.`};
+}
+
+/* painel "Como chegamos a esse valor" nas abas das cidades */
+function tabCid(linhas){
+  return tab(['Item', `O que ${oNome(nomeCid())} usa`, 'O que entrou na conta de Foz', 'Fonte'], linhas.map(r => [r[0], r[1], r[2], fonteCid(r[3])]));
+}
+function resumoCidades(){
+  const ls = ORDEM_CID.map(c => {
+    const d = CID[c], r = [d.cid.nome + ' (' + d.cid.ano + ')', rs(d.rkm), rs(d.cid.rkm_fu_foz), rs(d.conta_mes/1e6) + ' mi'];
+    return c === cenAtual ? dest(r) : r;
+  });
+  const v = ORDEM_CID.map(c => CID[c].rkm).sort((a, b) => a - b), h = v.length >> 1, med = v.length % 2 ? v[h] : (v[h - 1] + v[h]) / 2;
+  ls.push([`Mediana das ${v.length} cidades`, rs(med), '', '']);
+  ls.push(dest(['Nosso modelo', rs(NUM0.rkm), rs(NUM0.rkm), rs(NUM0.conta_mes/1e6) + ' mi']));
+  return tab(['Foz com a conta de', 'R$ por km', 'Com os motoristas por ônibus de Foz (2,11)', 'Conta por mês'], ls);
+}
+function detCid(k){
+  const C = CID[cenAtual].cid, I = NUM.itens_mes, K = NUM.km, N0 = NUM0;
+  const ROT = {motoristas:'Motoristas', fiscais:'Fiscais', manutencao:'Manutenção, administração e diretoria', limpeza:'Limpeza', adm:'Administração e diretoria',
+    diesel:'Diesel', oleo:'Óleo e Arla 32', pneus:'Pneus', pecas:'Peças', garagem:'Garagem (a de Foz)', outros:'Validador, despesas gerais, ambiental e outros',
+    seguros:'Seguros', iss:'ISS de Foz e INSS sobre a receita', ir:'Imposto de renda', rps:'Lucro sobre os custos (RPS)', capital:'Ônibus, garagem e equipamentos (parcela com retorno)'};
+  Object.assign(ROT, C.rot || {});
+  const lin = Object.keys(ROT).filter(x => (I[x] || 0) > 0 || (N0.itens_mes[x] || 0) > 0)
+    .map(x => [ROT[x], rs((I[x] || 0)/K), rs((N0.itens_mes[x] || 0)/N0.km)]);
+  lin.push(dest(['Total', rs(NUM.rkm), rs(N0.rkm)]));
+  const comum = sec('Como a conta foi feita', lista([
+    `Pegamos a planilha oficial ${deNome(C.nome)} (${C.ano}) e trocamos, no modelo de Foz, cada coeficiente que ${oNome(C.nome)} informa: litros de diesel por km, óleo, pneus, peças, motoristas e equipe por ônibus, encargos, despesas, retorno do capital.`,
+    'Ficaram os de Foz: os preços (diesel da ANP em Foz, salários e benefícios do acordo de Foz, preço dos ônibus e dos pneus), a frota de 105 ônibus, os 586 mil km por mês, a garagem, o validador e o ISS de 3%.',
+    'Onde a cidade não informa um número, ficou o do nosso modelo. Isso está marcado na tabela.',
+    'Taxas de gerenciamento do órgão gestor (Curitiba e Londrina cobram 4%) ficaram fora: Foz não tem essa taxa.',
+    'Atenção: cada cidade tem o seu trânsito e as suas horas de operação. São Paulo, por exemplo, gasta mais diesel por km e usa mais motoristas por ônibus porque o trânsito é muito mais lento que o de Foz.']));
+  const fu = sec('O ponto mais sensível: motoristas por ônibus', lista([
+    `${C.nome}: ${f2(C.fu_cidade)} motoristas por ônibus rodando. Foz hoje: 2,11.`,
+    'Esse número depende de quantas horas por dia cada ônibus roda. Cidades grandes rodam de madrugada e têm mais trânsito. Pelos horários do Foztrans, os ônibus de Foz rodam 12,9 horas por dia útil, o que dá uns 2,1 motoristas por ônibus na tabela da ANTP.',
+    `Com os coeficientes ${deNome(C.nome)}, mas com os 2,11 motoristas de Foz, o km daria ${rs(C.rkm_fu_foz)}.`]));
+  const docs = `<p>${C.docs.map(d => `<a href="${d[1]}" target="_blank" rel="noopener">${d[0]}</a>`).join(' · ')}</p>`;
+  if (k === 'geral' || k === 'conf'){
+    return {t:`O km de Foz pela conta ${deNome(C.nome)}`, g:`${rs(NUM.rkm)} <small>por km · ${rs(NUM.conta_mes/1e6)} milhões por mês</small>`, html:
+      sec('Resultado', resumoCidades()) + comum +
+      sec(`O que veio ${deNome(C.nome)}, item por item`, tabCid(C.itens)) +
+      sec('A conta do km, item por item', tab(['Item', `Com ${oNome(C.nome)}`, 'Nosso modelo'], lin)) + fu +
+      sec('Cuidados', lista([
+        'Os encargos de 2026 das cidades já têm parte do INSS trocada por 1,2% sobre a receita, como manda a Lei 14.973/2024. A partir de 2028 o INSS sobre a folha volta a ser cheio, e esse custo sobe. O nosso modelo já usa o INSS cheio (63,78%). Rio de Janeiro e Campinas já põem essa volta ano a ano; para eles usamos a média dos 12 anos.',
+        'Nas cidades que calculam por planilha (Belo Horizonte, Porto Alegre, Londrina, Manaus, São Paulo, Grande Curitiba e Rio Branco), o imposto de renda não é uma linha: sai da remuneração. Por isso ficou fora da conta delas. Curitiba (nova concessão), Juiz de Fora, Rio de Janeiro e Campinas (licitações 2026) usam fluxo de caixa, como o nosso, e o imposto entra.',
+        'São Paulo não tem linha de retorno do capital: o ônibus entra só pela depreciação, e a empresa ganha o lucro bruto da planilha (9,67% sobre os custos). Por isso, na conta de São Paulo, a parcela do ônibus é menor e aparece a linha de lucro.',
+        'Rio Branco tem ônibus sem ar-condicionado: somamos os 14% do ar ao consumo de lá. A licitação de Rio Branco foi suspensa em abril/2026, mas a planilha usada é a oficial do edital.', 'Belo Horizonte e Londrina não dão os litros de diesel do ônibus básico. Em Londrina usamos a média da frota, que é parecida com a de Foz. Em Belo Horizonte ficou o consumo de Foz, porque a frota de lá tem muitos articulados e subida.']) ) +
+      sec('Fontes', docs)};
+  }
+  const t = {motorista:'Motoristas e equipe', diesel:'Diesel', ar:'Ar-condicionado', pneus:'Pneus', pecas:'Peças, óleo e Arla',
+             bilhetagem:'Despesas da empresa', onibus:'Ônibus e retorno do capital'}[k] || 'Item';
+  return {t, g: conteudoCid(k) ? conteudoCid(k).g : '', html:
+    sec(`O que veio ${deNome(C.nome)}`, tabCid(linhasCid(k))) +
+    (k === 'motorista' ? fu : '') +
+    sec('A conta do km, item por item', tab(['Item', `Com ${oNome(C.nome)}`, 'Nosso modelo'], lin)) +
+    sec('Resultado', resumoCidades()) + comum + sec('Fontes', docs)};
+}
 
 /* ================= clique direto nas peças 3D ================= */
 const ray = new THREE.Raycaster(), mouse = new THREE.Vector2();
@@ -2386,7 +2676,7 @@ function abrirCalc(){
       <input id="fr_${k}" type="text" inputmode="numeric" autocomplete="off" value="${calcFrota[k]}" aria-label="Quantidade de ${MOD[k].nome}">
       <button data-fr="${k}" data-d="1" aria-label="Mais ${MOD[k].nome}">+</button>
       <em>${brl0(MOD[k].preco)}</em></div>`).join('');
-  jan.innerHTML = `<div class="topo"><span class="ic">${IC.calc}</span><div><h2>Quanto custa o mês</h2><div class="sub">${cenAtual === 'nosso' ? `contrato de 12 anos · dados de ${NUM.data}` : 'contrato de 20 anos'}${seloCen()}</div></div>
+  jan.innerHTML = `<div class="topo"><span class="ic">${IC.calc}</span><div><h2>Quanto custa o mês</h2><div class="sub">${cenAtual === 'nosso' || ehCid(cenAtual) ? `contrato de 12 anos · dados de ${NUM.data}` : 'contrato de 20 anos'}${seloCen()}</div></div>
     <button class="x" aria-label="Fechar">${IC.fechar}</button></div>
     <label class="cl" for="kmIn">Km rodados no mês, somando todos os ônibus</label>
     <div class="cin"><input id="kmIn" type="text" inputmode="numeric" autocomplete="off" value="${n0b(calcKm)}"><span>km</span></div>
@@ -2438,11 +2728,23 @@ function calcMostra(sync){
     ${km < X
       ? `<div class="aviso">Abaixo do corte de 400 mil km. Pela tarifa em 2 faixas, a empresa receberia ${brl0(faixas)} e faltariam ${brl0(conta - faixas)} da parte fixa.</div>`
       : `<p class="cmini">Pela tarifa em 2 faixas dá o mesmo: ${n0b(Math.min(km, X))} km × ${brl(P1)} + ${n0b(km - X)} km × ${brl(P2)}.</p>`}
-    <div class="fonte">${cenAtual === 'nosso' ? 'Mudando a frota, mudam a parcela dos ônibus, o seguro, os impostos, as peças, o diesel, os pneus e a equipe de garagem e fiscalização. Os motoristas seguem os km rodados.' : 'Conta pela planilha da FEPESE: os motoristas seguem o número de ônibus rodando (3,834 por ônibus), não os km. Mudando a frota, mudam também a parcela dos ônibus, os impostos, o diesel, os pneus e as peças.'} A frota padrão é a ${cenAtual === 'nosso' ? 'do modelo' : 'da FEPESE'}: ${ORDEM.map(k => `${FROTA_PADRAO[k]} ${MOD[k].nome.toLowerCase()}`).join(', ')}.<br>
+    <div class="fonte">${cenAtual === 'nosso' || ehCid(cenAtual) ? 'Mudando a frota, mudam a parcela dos ônibus, o seguro, os impostos, as peças, o diesel, os pneus e a equipe de garagem e fiscalização. Os motoristas seguem os km rodados.' : 'Conta pela planilha da FEPESE: os motoristas seguem o número de ônibus rodando (3,834 por ônibus), não os km. Mudando a frota, mudam também a parcela dos ônibus, os impostos, o diesel, os pneus e as peças.'} A frota padrão é a ${cenAtual === 'nosso' || ehCid(cenAtual) ? 'do modelo' : 'da FEPESE'}: ${ORDEM.map(k => `${FROTA_PADRAO[k]} ${MOD[k].nome.toLowerCase()}`).join(', ')}.<br>
     Para comparar, o contrato de hoje (preços de mar/2025: R$ 9,97 até 500 mil km e R$ 8,80 acima) daria ${brl0(hoje)} por mês, com frota mais velha.</div>`;
 }
 bt('bCalc').onclick = () => { if (janelaAtual === 'calc' && !jan.hidden){ jan.hidden = true; janelaAtual = null; tog(bt('bCalc'), false); } else abrirCalc(); };
 document.getElementById('chipMedia').textContent = `${brl(NUM.rkm)}/km`;
+// a faixa de cima (abas) cresceu: se o quadrinho da direita encostar nela, ele desce para baixo das abas
+function ajustaChip(){
+  const ch = document.getElementById('chip');
+  document.body.classList.remove('chip-baixo', 'jan-ajust');
+  if (!ch || innerWidth <= 720) return;
+  // a janela de detalhes da direita começa logo abaixo do quadrinho do topo
+  document.documentElement.style.setProperty('--janTop', Math.round(ch.getBoundingClientRect().bottom + 10) + 'px');
+  document.body.classList.add('jan-ajust');
+}
+addEventListener('resize', ajustaChip);
+ajustaChip();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustaChip);
 document.getElementById('corteT3').textContent = `até ${brl(NUM.P1)} · acima ${brl(NUM.P2)}`;
 bt('bPontos').onclick = () => { const v = document.body.classList.toggle('sem-pontos'); tog(bt('bPontos'), !v); };
 let audio = null;
@@ -2477,7 +2779,25 @@ function montarFaixa(){
   }
 }
 montarFaixa();
-document.getElementById('cen').addEventListener('click', e => { const b = e.target.closest('button[data-cen]'); if (b && b.dataset.cen !== cenAtual) aplicarCenario(b.dataset.cen); });
+/* faixa de baixo: Tipos de ônibus · Foz · Outras cidades */
+function abrirGrupo(g){
+  document.querySelectorAll('#grupos button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.g === g)));
+  document.querySelectorAll('#painel > .pg').forEach(p => { p.hidden = p.dataset.g !== g; });
+  document.body.classList.toggle('g-cid', g === 'cid');
+}
+function marcaGrupos(){
+  let c = 'nosso'; try { c = cenAtual; } catch (e) {}
+  const cd = typeof CID !== 'undefined' && !!CID[c];
+  document.getElementById('gTipos').textContent = MOD[atual] ? MOD[atual].nome : '';
+  document.getElementById('gFoz').textContent = cd ? '3 contas' : CEN_NOME[c];
+  document.getElementById('gCid').textContent = cd ? CEN_NOME[c] : ORDEM_CID.length + ' cidades';
+}
+document.querySelectorAll('#painel [data-cen]').forEach(b => {
+  const c = b.dataset.cen, v = c === 'nosso' ? NUM0.rkm : ((typeof FEP !== 'undefined' && FEP[c]) || CID[c]).rkm;
+  b.querySelector('span').textContent = brl(v) + (b.classList.contains('cd') ? '' : '/km');
+});
+document.getElementById('grupos').addEventListener('click', e => { const b = e.target.closest('button[data-g]'); if (b) abrirGrupo(b.dataset.g); });
+document.getElementById('painel').addEventListener('click', e => { const b = e.target.closest('button[data-cen]'); if (b && b.dataset.cen !== cenAtual) aplicarCenario(b.dataset.cen); });
 
 /* ================= noite e por dentro ================= */
 function aplicarNoite(){
